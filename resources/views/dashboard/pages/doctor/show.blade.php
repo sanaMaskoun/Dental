@@ -3,7 +3,7 @@
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">
-        <div class="page-header">
+        {{--  <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-sub-header">
@@ -15,18 +15,15 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  --}}
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="about-info">
-                            <h4>Profile <span><a href="javascript:;"><i
-                                            class="feather-more-vertical"></i></a></span></h4>
-                        </div>
+
                         <div class="student-profile-head">
                             <div class="profile-bg-img">
-                                <img src="assets/img/profile-bg.jpg" alt="Profile">
+                                <img style="max-height:300px" src="{{ asset('img/medical.webp') }}" alt="Profile">
                             </div>
 
                             <div class="row">
@@ -51,7 +48,7 @@
                                 </div>
 
 
-                               
+
                             </div>
                         </div>
                     </div>

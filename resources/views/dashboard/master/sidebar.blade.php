@@ -13,7 +13,7 @@
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-graduation-cap"></i> <span> Doctor</span> <span
+                    <a href="#"><i class="fas fa-stethoscope"></i><span> Doctor</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="{{ route('doctor_list') }}">Doctors List</a></li>
@@ -22,14 +22,14 @@
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-clipboard"></i> <span> Patient</span> <span
+                    <a href="#"><i class="fas fa-user-injured"></i> <span> Patient</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="invoices.html">Patients List</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-clipboard"></i> <span> Appointment</span> <span
+                    <a href="#"><i class="fas fa-calendar-check"></i> <span> Appointment</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="invoices.html">Appointments List</a></li>
@@ -37,7 +37,7 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-clipboard"></i> <span> Diagnoses</span> <span
+                    <a href="#"><i class="fas fa-file-medical-alt"></i> <span> Diagnoses</span> <span
                             class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="invoices.html">Diagnoses List</a></li>
@@ -46,7 +46,7 @@
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Specialization</span> <span
+                    <a href="#"><i class="fas fa-user-md"></i> <span> Specialization</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="teachers.html">specializations List</a></li>
@@ -55,7 +55,7 @@
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-building"></i> <span> service</span> <span
+                    <a href="#"><i class="fas fa-hand-holding-medical"></i> <span> service</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="departments.html">services List</a></li>
@@ -64,7 +64,7 @@
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-book-reader"></i> <span> FAQ</span> <span
+                    <a href="#"><i class="fas fa-info-circle"></i>  <span> FAQ</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="subjects.html">FAQ List</a></li>
@@ -73,7 +73,7 @@
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-clipboard"></i> <span> Invoices</span> <span
+                    <a href="#"><i class="fas fa-file-invoice"></i>  <span> Invoices</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="invoices.html">Invoices List</a></li>
@@ -81,19 +81,19 @@
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Contact As</span> </a>
+                    <a href="#"><i class="fas fa-headset"></i> <span> Contact As</span> </a>
 
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Join As</span> </a>
+                    <a href="#"><i class="fas fa-user-plus"></i> <span> Join As</span> </a>
 
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Bookings</span> </a>
+                    <a href="#"><i class="fas fa-book"></i> <span> Bookings</span> </a>
 
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Payments </span> </a>
+                    <a href="#"><i class="fas fa-money-bill-wave"></i> <span> Payments </span> </a>
 
                 </li>
 
