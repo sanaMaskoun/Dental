@@ -16,8 +16,8 @@
                     <a href="#"><i class="fas fa-graduation-cap"></i> <span> Doctor</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="students.html">Doctors List</a></li>
-                        <li><a href="add-student.html">Doctor Add</a></li>
+                        <li><a href="{{ route('doctor_list') }}">Doctors List</a></li>
+                        <li><a href="{{ route('doctor_create') }}">Doctor Add</a></li>
                     </ul>
                 </li>
 
@@ -86,6 +86,14 @@
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Join As</span> </a>
+
+                </li>
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Bookings</span> </a>
+
+                </li>
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Payments </span> </a>
 
                 </li>
 

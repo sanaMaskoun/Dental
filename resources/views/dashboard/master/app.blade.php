@@ -18,10 +18,14 @@
 
     <link rel="stylesheet" href="{{ asset('plugins/icons/flags/flags.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
 
 
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables/datatables.min.css') }}">
+
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
@@ -58,11 +62,16 @@
     <script src="{{ asset('js/feather.min.js') }}"></script>
 
     <script src="{{ asset('plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables/datatables.min.js') }}"></script>
 
     <script src="{{ asset('plugins/morris/raphael-min.js') }}"></script>
     <script src="{{ asset('plugins/morris/morris.min.js') }}"></script>
     <script src="{{ asset('plugins/morris/chart-data.js') }}"></script>
 
+    <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
+
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
 </body>
 
