@@ -9,7 +9,7 @@
                     <div class="col">
                         <h3 class="page-title">Edit Doctor</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Doctors</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active">Edit Doctor</li>
                         </ul>
                     </div>
@@ -126,8 +126,8 @@
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Password <span class="login-danger">*</span></label>
-                                            <input type="password" class="form-control" name="password"
-                                                value="{{ $doctor->password}}" >
+                                            <input type="password" class="form-control" name="password" placeholder="Enter new password">
+
 
                                             @error('password')
                                                 <small class="form-text text-danger">{{ $message }}</small>

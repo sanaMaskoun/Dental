@@ -40,5 +40,7 @@ class User extends Authenticatable implements HasMedia
         ->useFallbackUrl(config('app.url') .'/img/user.png')
 
             ->singleFile();
+            $this->addMediaCollection('certifications');
+
         }
 }

@@ -14,13 +14,13 @@ class Doctor extends Model implements HasMedia
     protected  $guarded = [];
     protected  $table = 'doctors';
 
-
-
-    public function registerMediaCollections(): void
+    public function specializations()
     {
-        $this->addMediaCollection('doctorImg')
-        ->useFallbackUrl(config('app.url') .'/img/doctor.png')
+        return $this->belongsToMany(Specialization::class, 'doctor_specialization');
+    }
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'doctor_service');
+    }
 
-            ->singleFile();
-        }
 }

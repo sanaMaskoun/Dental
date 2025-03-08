@@ -2,8 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserTypeEnum;
+use App\Http\Requests\DoctorEditRequest;
 use App\Http\Requests\DoctorRequest;
 use App\Models\Doctor;
+use App\Models\Service;
+use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -54,51 +57,52 @@ class DoctorController extends Controller
 
     }
 
-    public function update(DoctorRequest $request, User $doctor)
+    public function update(DoctorEditRequest $request, User $doctor)
     {
+        $doctor->update($request->userValidated());
 
+        if ($doctor->doctor) {
+            $doctor->doctor->update($request->doctorValidated());
+        }
 
-          $user =  $doctor->update($request->userValidated());
-         $edit_doctor =   $doctor->doctor()->update($request->doctorValidated());
-            if (! is_null(request()->file('profile'))) {
-                // $doctor->doctor()->clearMediaCollection('doctorImg');
-                $doctor->addMedia($request->file('profile'))->toMediaCollection('profile');
-            }
-            return redirect()->route('doctor_list')
-                ->with('success', 'Modified successfully');
+        if ($request->hasFile('profile')) {
+            $doctor->clearMediaCollection('profile');
+            $doctor->addMedia($request->file('profile'))->toMediaCollection('profile');
+        }
 
+        return redirect()->route('doctor_list')->with('success', 'Modified successfully');
     }
+
 
     public function editProfile(User $doctor)
     {
-        // if (Auth()->user()->is_active == 0) {
-        //     return redirect()->route('coachDetails', Auth()->user()->id)->with('error', 'This account is inactive');
-        // } else {
-        //     $specialties         = Specialty::all();
-        //     $selectedSpecialties = $coach->coach?->specialties->pluck('id')->toArray();
 
-        //     return view('coach.editProfile', compact(['coach', 'specialties', 'selectedSpecialties']));
-        // }
+            $services         = Service::all();
+            $selected_services = $doctor->doctor?->services->pluck('id')->toArray();
+
+            return view('dashboard.pages.doctor.editProfile', compact(['doctor', 'services', 'selected_services']));
+
     }
 
-    public function updateProfile(DoctorRequest $request, User $user)
+    public function updateProfile(DoctorEditRequest $request, User $user)
     {
-        // if ($user->is_active == 0) {
-        //     return redirect()->route('coachesList')->with('error', 'The account you want to modify is inactive');
-        // } else {
 
-        //     $user->update($request->userValidated());
+dd(1);
+        $user->update($request->userValidated()); 
+        $user->doctor()->update($request->doctorValidated()); 
+        $doctor = $user->doctor; 
+        
+        $doctor->services()->sync($request->services); 
+        
+        if (!is_null(request()->file('profile'))) {
+            $user->clearMediaCollection('profile');
+            $user->addMedia($request->file('profile'))->toMediaCollection('profile');
+        }
+        
+            // return redirect()->back();
+            return redirect()->route('doctor_details', Auth()->user()->id)
+                ->with('success', 'Modified successfully');
 
-        //     $coach = $user->coach()->updateOrCreate([], $request->coachValidated());
-
-        //     $coach->specialties()->sync($request->specialties);
-        //     if (! is_null(request()->file('profile'))) {
-        //         $user->clearMediaCollection('profile');
-        //         $user->addMedia($request->file('profile'))->toMediaCollection('profile');
-        //     }
-        //     return redirect()->route('coachDetails', Auth()->user()->id)
-        //         ->with('success', 'Modified successfully');
-        // }
     }
 
     public function availability(Request $request)

@@ -12,6 +12,26 @@
                     <a href="#"><i class="feather-grid"></i> <span> Dashboard</span></a>
                 </li>
 
+
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-user-md"></i> <span> Specialization</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="{{ route('specialization_list') }}">specializations List</a></li>
+                        <li><a href="{{ route('specialization_create') }}">specialization Add</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-hand-holding-medical"></i> <span> service</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="{{ route('service_list') }}">services List</a></li>
+                        <li><a href="{{ route('service_create') }}">service Add</a></li>
+                    </ul>
+                </li>
+
+
                 <li class="submenu">
                     <a href="#"><i class="fas fa-stethoscope"></i><span> Doctor</span> <span
                             class="menu-arrow"></span></a>
@@ -28,6 +48,7 @@
                         <li><a href="invoices.html">Patients List</a></li>
                     </ul>
                 </li>
+
                 <li class="submenu">
                     <a href="#"><i class="fas fa-calendar-check"></i> <span> Appointment</span> <span
                             class="menu-arrow"></span></a>
@@ -36,6 +57,7 @@
                         <li><a href="invoices.html">Appointment Add</a></li>
                     </ul>
                 </li>
+
                 <li class="submenu">
                     <a href="#"><i class="fas fa-file-medical-alt"></i> <span> Diagnoses</span> <span
                             class="menu-arrow"></span></a>
@@ -45,24 +67,9 @@
                             </ul>
                 </li>
 
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-user-md"></i> <span> Specialization</span> <span
-                            class="menu-arrow"></span></a>
-                    <ul>
-                        <li><a href="teachers.html">specializations List</a></li>
-                        <li><a href="add-teacher.html">specialization Add</a></li>
-                    </ul>
-                </li>
+              
 
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-hand-holding-medical"></i> <span> service</span> <span
-                            class="menu-arrow"></span></a>
-                    <ul>
-                        <li><a href="departments.html">services List</a></li>
-                        <li><a href="add-department.html">service Add</a></li>
-                    </ul>
-                </li>
-
+               
                 <li class="submenu">
                     <a href="#"><i class="fas fa-info-circle"></i>  <span> FAQ</span> <span
                             class="menu-arrow"></span></a>

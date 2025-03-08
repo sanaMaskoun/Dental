@@ -2,6 +2,8 @@ html {
     height: 100%
 }
 
+
+
 body {
     background-color: #f7f7fa;
     color: #333;
@@ -4332,7 +4334,13 @@ table.table-inbox tbody tr.checked {
     width: 100%;
     border-radius: 10px
 }
+.student-profile-head{
+    background-image: var(--background-url);
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
+}
 .profile-user-box {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4348,13 +4356,14 @@ table.table-inbox tbody tr.checked {
 .profile-user-img {
     margin-right: 20px;
     position: relative;
-    top: -30px
+    /* top: -30px */
 }
 
 .profile-user-img img {
+    height: 140px;
     border-radius: 50%;
     border: 9px solid #fff;
-    width: 141px
+    width: 140px;
 }
 
 .names-profiles h4 {

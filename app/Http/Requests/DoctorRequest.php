@@ -16,20 +16,20 @@ class DoctorRequest extends FormRequest
     }
     public function rules(): array
     {
-        // dd(request()->all());
-        $emailUnique = Rule::unique('users', 'email')->ignore($this->doctor);
+       
 
         return [
             'first_name'               => ['required', 'string', 'max:20'],
             'last_name'                => ['required', 'string', 'max:20'],
-            'email'                    => ['required', 'email',$emailUnique],
+            'email'                    => ['required', 'email'],
             'password'                 => ['required', 'min:8', 'max:20'],
             'phone'                    => ['required', 'numeric', 'digits_between:10,14'],
             'land_line'                => ['required', 'numeric', 'digits_between:7,10'],
             'bio'                      => ['required',  'max:500'],
-            'profile'               => ['nullable'],
+            'profile'                  => ['nullable'],
             'location'                 => ['string' , 'required' ,'max:50'],
             'years_of_practice'        => ['required','numeric'],
+            // 'services'                 => ['nullable', 'array', 'exists:services,id'],
 
         ];
     }
