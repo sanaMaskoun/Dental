@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserTypeEnum;
+use App\Http\Requests\DoctorEditProfileRequest;
 use App\Http\Requests\DoctorEditRequest;
 use App\Http\Requests\DoctorRequest;
 use App\Models\Doctor;
@@ -84,36 +85,34 @@ class DoctorController extends Controller
 
     }
 
-    public function updateProfile(DoctorEditRequest $request, User $user)
+    public function updateProfile(DoctorEditProfileRequest $request, User $user)
     {
 
-dd(1);
         $user->update($request->userValidated()); 
         $user->doctor()->update($request->doctorValidated()); 
         $doctor = $user->doctor; 
         
         $doctor->services()->sync($request->services); 
+
+        $this->assignSpecialtiesToDoctor($doctor);
+
+       
         
         if (!is_null(request()->file('profile'))) {
             $user->clearMediaCollection('profile');
             $user->addMedia($request->file('profile'))->toMediaCollection('profile');
         }
         
-            // return redirect()->back();
             return redirect()->route('doctor_details', Auth()->user()->id)
                 ->with('success', 'Modified successfully');
 
     }
 
-    public function availability(Request $request)
-    {
-        // Appointment::create([
-        //     'availability_date' => $request->date,
-        //     'availability_time' => $request->time,
-        //     'coach_id'          => Auth()->user()->coach->id,
-        // ]);
-        // return redirect()->route('coachDetails', Auth()->user()->id)
-        //     ->with('success', 'add successfully');
+    protected function assignSpecialtiesToDoctor(Doctor $doctor)
+{
+    $specializations = $doctor->services->pluck('specialization_id')->unique();
 
-    }
+    $doctor->specializations()->sync($specializations);
+}
+  
 }

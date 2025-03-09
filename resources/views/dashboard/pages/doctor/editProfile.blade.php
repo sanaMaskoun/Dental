@@ -15,22 +15,22 @@
                                                 <img src="{{ $doctor->getFirstMediaUrl('profile') }}" alt="Profile">
                                                 <div class="form-group students-up-files profile-edit-icon mb-0">
                                                     <div class="uplod d-flex">
-                                                        <a href="{{ route('doctor_edit_profile', $doctor->id) }}"
-                                                            class="btn">
+                                                        <label for="profile" class="btn">
                                                             <i class="feather-edit-3"></i>
-                                                        </a>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <form action="{{ route('doctor_update_profile', $doctor->id) }}" method="POST"
-                                enctype="multipart/form-data">
+                            <form action="{{ route('doctor_update_profile', $doctor->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+
+                                <input type="file" id="profile" name="profile" accept="image/*" style="display: none;">
+
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="student-personals-grp">
@@ -46,10 +46,8 @@
                                                         </div>
                                                         <div class="views-personal">
                                                             <h4>Name </h4>
-                                                            <input type="text" name="first_name" class="form-control"
-                                                                value="{{ $doctor->first_name }}">
-                                                            <input type="text" name="last_name" class="form-control mt-2"
-                                                                value="{{ $doctor->last_name }}">
+                                                            <input type="text" name="first_name" class="form-control" value="{{ $doctor->first_name }}">
+                                                            <input type="text" name="last_name" class="form-control mt-2" value="{{ $doctor->last_name }}">
                                                         </div>
                                                     </div>
 
@@ -59,8 +57,7 @@
                                                         </div>
                                                         <div class="views-personal">
                                                             <h4>Mobile</h4>
-                                                            <input type="text" name="phone" class="form-control"
-                                                                value="{{ $doctor->phone }}">
+                                                            <input type="text" name="phone" class="form-control" value="{{ $doctor->phone }}">
                                                         </div>
                                                     </div>
 
@@ -70,8 +67,7 @@
                                                         </div>
                                                         <div class="views-personal">
                                                             <h4>Email</h4>
-                                                            <input type="email" name="email" class="form-control"
-                                                                value="{{ $doctor->email }}">
+                                                            <input type="email" name="email" class="form-control" value="{{ $doctor->email }}">
                                                         </div>
                                                     </div>
 
@@ -81,8 +77,7 @@
                                                         </div>
                                                         <div class="views-personal">
                                                             <h4>Land Line</h4>
-                                                            <input type="text" name="land_line" class="form-control"
-                                                                value="{{ $doctor->doctor->land_line }}">
+                                                            <input type="text" name="land_line" class="form-control" value="{{ $doctor->doctor->land_line }}">
                                                         </div>
                                                     </div>
 
@@ -92,8 +87,7 @@
                                                         </div>
                                                         <div class="views-personal">
                                                             <h4>Location</h4>
-                                                            <input type="text" name="location" class="form-control"
-                                                                value="{{ $doctor->doctor->location }}">
+                                                            <input type="text" name="location" class="form-control" value="{{ $doctor->doctor->location }}">
                                                         </div>
                                                     </div>
 
@@ -103,9 +97,7 @@
                                                         </div>
                                                         <div class="views-personal">
                                                             <h4>Years of Practice</h4>
-                                                            <input type="number" name="years_of_practice"
-                                                                class="form-control"
-                                                                value="{{ $doctor->doctor->years_of_practice }}">
+                                                            <input type="number" name="years_of_practice" class="form-control" value="{{ $doctor->doctor->years_of_practice }}">
                                                         </div>
                                                     </div>
 
@@ -121,8 +113,7 @@
 
                                                     <div class="personal-activity">
                                                         <div class="personal-icons">
-                                                            <i
-                                                                class="fas fa-circle {{ $doctor->is_active == 0 ? 'text-danger' : 'text-success' }}"></i>
+                                                            <i class="fas fa-circle {{ $doctor->is_active == 0 ? 'text-danger' : 'text-success' }}"></i>
                                                         </div>
                                                         <div class="views-personal">
                                                             <h4>Status</h4>
@@ -133,8 +124,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
 
                                     <div class="col-lg-8">
@@ -162,9 +151,7 @@
                                                                     @foreach ($services as $index => $service)
                                                                         <div class="col-md-3">
                                                                             <div class="form-check">
-                                                                                <input type="checkbox"
-                                                                                    name="services[]" value="{{ $service->id }}"
-                                                                                    {{ in_array($service->id, $selected_services) ? 'checked' : '' }}>
+                                                                                <input type="checkbox" name="services[]" value="{{ $service->id }}" {{ in_array($service->id, $selected_services) ? 'checked' : '' }}>
                                                                                 <label>{{ $service->name }}</label>
                                                                             </div>
                                                                         </div>
@@ -176,20 +163,14 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
-
                                     </div>
-
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>

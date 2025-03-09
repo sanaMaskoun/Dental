@@ -33,7 +33,7 @@
                                                 <img src="{{ $doctor->getFirstMediaUrl('profile') }}" alt="Profile">
 
                                                 <div class="form-group students-up-files profile-edit-icon mb-0"
-                                                    style="bottom: -53px; left: 67rem;">
+                                                    style="bottom: -53px; left: 62rem;">
                                                     <div class="uplod d-flex">
 
                                                         <label class="file-upload profile-upbtn mb-0">
@@ -179,7 +179,7 @@
                                                 <div class="skill-statistics">
                                                     <div class="skills-head">
                                                         @foreach ($doctor->doctor?->specializations as $specialization)
-                                                            <h5>{{ $specialization->name }}</h5>
+                                                            <p>{{ $specialization->name }}</p>
                                                         @endforeach
     
                                                     </div>
