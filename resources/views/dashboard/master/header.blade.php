@@ -5,9 +5,9 @@
             <img src="{{ asset('img/logo.png') }}" alt="Logo">
         </a>
 
-        <a href="index.html" class="logo logo-small">
-        <img src="{{ asset('img/logo.png') }}" width="30" height="30">
-    </a>
+        <a href="" class="logo logo-small">
+            <img src="{{ asset('img/logo.png') }}" width="30" height="30">
+        </a>
     </div>
 
     <div class="menu-toggle">
@@ -133,22 +133,18 @@
 
             <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                 <span class="user-img">
-                    <img class="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt="Soeng Souy">
+                    <img class="rounded-circle" src="{{ Auth()->user()->getFirstMediaUrl('profile') }}" width="31"
+                        alt="Soeng Souy">
                     <div class="user-text">
-                        <h6>Soeng Souy</h6>
-                        <p class="text-muted mb-0">Administrator</p>
+                        <h6>{{ Auth()->user()->first_name }} {{ Auth()->user()->last_name }}</h6>
                     </div>
                 </span>
             </a>
 
             <div class="dropdown-menu">
-                <div class="user-header">
-                    <div class="avatar avatar-sm">
-                        <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
-                    </div>
-                </div>
-                <a class="dropdown-item" href="">My Profile</a>
-
+                @role('doctor')
+                    <a class="dropdown-item" href="">My Profile</a>
+                @endrole
                 @if (Auth::check())
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

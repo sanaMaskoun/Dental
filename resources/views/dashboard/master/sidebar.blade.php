@@ -41,6 +41,17 @@
                     </ul>
                 </li>
 
+
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-calendar-check"></i> <span> Appointment</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="{{ route('appointment_list') }}">Appointments List</a></li>
+                        <li><a href="{{ route('appointment_create') }}">Appointment Add</a></li>
+                    </ul>
+                </li>
+
+
                 <li class="submenu">
                     <a href="#"><i class="fas fa-user-injured"></i> <span> Patient</span> <span
                             class="menu-arrow"></span></a>
@@ -49,14 +60,7 @@
                     </ul>
                 </li>
 
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-calendar-check"></i> <span> Appointment</span> <span
-                            class="menu-arrow"></span></a>
-                    <ul>
-                        <li><a href="invoices.html">Appointments List</a></li>
-                        <li><a href="invoices.html">Appointment Add</a></li>
-                    </ul>
-                </li>
+
 
                 <li class="submenu">
                     <a href="#"><i class="fas fa-file-medical-alt"></i> <span> Diagnoses</span> <span
@@ -67,9 +71,9 @@
                             </ul>
                 </li>
 
-              
 
-               
+
+
                 <li class="submenu">
                     <a href="#"><i class="fas fa-info-circle"></i>  <span> FAQ</span> <span
                             class="menu-arrow"></span></a>

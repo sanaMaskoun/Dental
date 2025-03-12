@@ -9,35 +9,14 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    // protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->middleware('auth')->only('logout');
     }
 
     public function login(Request $request)
@@ -52,12 +31,12 @@ class LoginController extends Controller
         {
 
             if (auth()->user()->type == UserTypeEnum::admin) {
-                return redirect()->route('adminDashboard');
+                return redirect()->route('admin_dashboard');
             }else if (auth()->user()->type == UserTypeEnum::doctor) {
-                // return redirect()->route('coachDashboard');
+                 return redirect()->route('doctor_dashboard');
             }
             else if (auth()->user()->type == UserTypeEnum::patient) {
-                // return redirect()->route('index');
+                 return redirect()->route('index');
             }
         }else{
             return redirect()->route('login')

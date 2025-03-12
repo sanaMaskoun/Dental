@@ -15,7 +15,10 @@ class DoctorController extends Controller
 {
 
     public function dashboard()
-    {}
+    {
+        return view('dashboard.pages.doctor.dashboard');
+
+    }
 
 
     public function index(Request $request)
@@ -88,21 +91,21 @@ class DoctorController extends Controller
     public function updateProfile(DoctorEditProfileRequest $request, User $user)
     {
 
-        $user->update($request->userValidated()); 
-        $user->doctor()->update($request->doctorValidated()); 
-        $doctor = $user->doctor; 
-        
-        $doctor->services()->sync($request->services); 
+        $user->update($request->userValidated());
+        $user->doctor()->update($request->doctorValidated());
+        $doctor = $user->doctor;
+
+        $doctor->services()->sync($request->services);
 
         $this->assignSpecialtiesToDoctor($doctor);
 
-       
-        
+
+
         if (!is_null(request()->file('profile'))) {
             $user->clearMediaCollection('profile');
             $user->addMedia($request->file('profile'))->toMediaCollection('profile');
         }
-        
+
             return redirect()->route('doctor_details', Auth()->user()->id)
                 ->with('success', 'Modified successfully');
 
@@ -114,5 +117,5 @@ class DoctorController extends Controller
 
     $doctor->specializations()->sync($specializations);
 }
-  
+
 }

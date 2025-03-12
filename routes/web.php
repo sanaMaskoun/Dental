@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SpecializationController;
@@ -20,12 +21,13 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('dashboard.master.app');
-})->name('adminDashboard');
+})->name('admin_dashboard')->middleware(middleware: 'auth');
+;
 
 Auth::routes();
 
 
-Route::group(['prefix' => 'specialization'], function () {
+Route::group(['prefix' => 'specialization', 'middleware' => 'auth'], function () {
     Route::get('/', [SpecializationController::class, 'index'])->name('specialization_list');
 
     Route::get('/create', [SpecializationController::class, 'create'])->name('specialization_create');
@@ -38,7 +40,7 @@ Route::group(['prefix' => 'specialization'], function () {
 });
 
 
-Route::group(['prefix' => 'service'], function () {
+Route::group(['prefix' => 'service', 'middleware' => 'auth'], function () {
     Route::get('/', [ServiceController::class, 'index'])->name('service_list');
 
     Route::get('/create', [ServiceController::class, 'create'])->name('service_create');
@@ -52,9 +54,9 @@ Route::group(['prefix' => 'service'], function () {
 
 
 
-Route::group(['prefix' => 'doctor'], function () {
+Route::group(['prefix' => 'doctor', 'middleware' => 'auth'], function () {
 
-    Route::get('/doctor-dashboard', [DoctorController::class, 'dashboard'])->name('doctor_dashboard');
+    Route::get('/doctor-dashboard', action: [DoctorController::class, 'dashboard'])->name('doctor_dashboard');
 
     Route::get('/add', [DoctorController::class, 'create'])->name('doctor_create');
     Route::post('/store', [DoctorController::class, 'store'])->name('doctor_store');
@@ -65,14 +67,31 @@ Route::group(['prefix' => 'doctor'], function () {
 
     Route::get('/edit/{doctor}', [DoctorController::class, 'edit'])->name('doctor_edit');
     Route::post('/update/{doctor}', [DoctorController::class, 'update'])->name('doctor_update');
-    
+
 
     Route::get('/edit-profile/{doctor}', [DoctorController::class, 'editProfile'])->name('doctor_edit_profile');
     Route::post('/update-profile/{user}', [DoctorController::class, 'updateProfile'])->name('doctor_update_profile');
 });
 
 
-Route::post('{user}/toggle', [AdminController::class, 'toggleStatus'])->name('toggleStatus');
-// ->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'appointment', 'middleware' => 'auth'], function () {
+    Route::get('/', [AppointmentController::class, 'index'])->name('appointment_list');
+    Route::get('/json', [AppointmentController::class, 'getAppointments']);
+
+
+    Route::get('/create', [AppointmentController::class, 'create'])->name('appointment_create');
+    Route::post('/sotre', [AppointmentController::class, 'store'])->name('appointment_store');
+
+    Route::put('/update/{appointment}', [AppointmentController::class, 'update'])->name('appointment_update');
+
+    Route::delete('/delete/{appointment}', [AppointmentController::class, 'destroy']);
+});
+
+
+Route::post('{user}/toggle', [AdminController::class, 'toggleStatus'])->name('toggleStatus')
+->middleware(middleware: 'auth');
+
+Route::get('/home', function(){
+    return 'interface';
+})->name('home');
