@@ -23,4 +23,9 @@ class Doctor extends Model implements HasMedia
         return $this->belongsToMany(Service::class, 'doctor_service');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
 }

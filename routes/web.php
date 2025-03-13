@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DiagnosController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SpecializationController;
 use Illuminate\Support\Facades\Route;
@@ -87,6 +89,31 @@ Route::group(['prefix' => 'appointment', 'middleware' => 'auth'], function () {
 
     Route::delete('/delete/{appointment}', [AppointmentController::class, 'destroy']);
 });
+
+
+
+Route::group(['prefix' => 'patient', 'middleware' => 'auth'], function () {
+
+
+    Route::get('/list', [PatientController::class, 'index'])->name('patient_list');
+
+
+    Route::get('/show/{patient}', [PatientController::class, 'show'])->name('patient_details');
+
+
+});
+
+Route::group(['prefix' => 'diagnose', 'middleware' => 'auth'], function () {
+
+
+    Route::get('/list', [DiagnosController::class, 'index'])->name('diagnose_list');
+
+
+    Route::get('/show/{diagnose}', [DiagnosController::class, 'show'])->name('diagnose_details');
+
+
+});
+
 
 
 Route::post('{user}/toggle', [AdminController::class, 'toggleStatus'])->name('toggleStatus')

@@ -33,9 +33,11 @@
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+
+
     <style>
         :root {
-            --background-url: url('{{ asset('img/medical.png') }}');
+            --background-url: url('{{ asset('img/medical.webp') }}');
         }
     </style>
 </head>

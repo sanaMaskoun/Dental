@@ -34,13 +34,16 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasOne(Doctor::class , 'user_id');
     }
+    public function patient()
+    {
+        return $this->hasOne(Patient::class , 'user_id');
+    }
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('profile')
         ->useFallbackUrl(config('app.url') .'/img/user.png')
 
             ->singleFile();
-            $this->addMediaCollection('certifications');
 
         }
 }

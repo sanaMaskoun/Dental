@@ -56,7 +56,7 @@
                     <a href="#"><i class="fas fa-user-injured"></i> <span> Patient</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="invoices.html">Patients List</a></li>
+                        <li><a href="{{ route('patient_list') }}">Patients List</a></li>
                     </ul>
                 </li>
 
@@ -66,7 +66,7 @@
                     <a href="#"><i class="fas fa-file-medical-alt"></i> <span> Diagnoses</span> <span
                             class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="invoices.html">Diagnoses List</a></li>
+                                <li><a href="{{ route('diagnose_list') }}">Diagnoses List</a></li>
                                 <li><a href="invoices.html">Diagnoses Add</a></li>
                             </ul>
                 </li>

@@ -14,9 +14,19 @@ class Diagnos extends Model implements HasMedia
     protected  $table = 'diagnos';
 
 
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class ,'patient_id');
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class ,'doctor_id');
+    }
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('diagnos')
+        $this->addMediaCollection('diagnosImg')
+        ->useFallbackUrl(config('app.url') .'/img/diagnoses.webp ')
 
             ->singleFile();
         }
