@@ -2,11 +2,18 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ContactAsController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\CreditController;
 use App\Http\Controllers\DiagnosController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\FAQController;
+use App\Http\Controllers\JoinAsController;
+use App\Http\Controllers\JoinUsController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SpecializationController;
+use App\Models\ContactAs;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,6 +35,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+Route::post('{user}/toggle', [AdminController::class, 'toggleStatus'])->name('toggleStatus')
+->middleware(middleware: 'auth');
 
 Route::group(['prefix' => 'specialization', 'middleware' => 'auth'], function () {
     Route::get('/', [SpecializationController::class, 'index'])->name('specialization_list');
@@ -108,16 +118,80 @@ Route::group(['prefix' => 'diagnose', 'middleware' => 'auth'], function () {
 
     Route::get('/list', [DiagnosController::class, 'index'])->name('diagnose_list');
 
+    Route::get('/create', [DiagnosController::class, 'create'])->name('diagnose_create');
+    Route::post('/sotre', [DiagnosController::class, 'store'])->name('diagnose_store');
 
     Route::get('/show/{diagnose}', [DiagnosController::class, 'show'])->name('diagnose_details');
+
+    Route::get('/edit/{diagnose}', [DiagnosController::class, 'edit'])->name('diagnose_edit');
+    Route::post('/update/{diagnose}', [DiagnosController::class, 'update'])->name('diagnose_update');
+
+    Route::get('/delete/{diagnose}', [DiagnosController::class, 'destroy'])->name('diagnose_delete');
 
 
 });
 
 
+Route::group(['prefix' => 'FAQ', 'middleware' => 'auth'], function () {
 
-Route::post('{user}/toggle', [AdminController::class, 'toggleStatus'])->name('toggleStatus')
-->middleware(middleware: 'auth');
+    Route::get('/list', [FAQController::class, 'index'])->name('faq_list');
+
+    Route::get('/add', [FAQController::class, 'create'])->name('faq_create');
+    Route::post('/store', [FAQController::class, 'store'])->name('faq_store');
+
+    Route::get('/show/{faq}', [FAQController::class, 'show'])->name('faq_details');
+
+    Route::get('/edit/{faq}', [FAQController::class, 'edit'])->name('faq_edit');
+    Route::post('/update/{faq}', [FAQController::class, 'update'])->name('faq_update');
+
+    Route::get('/delete/{faq}', [FAQController::class, 'destroy'])->name('faq_delete');
+
+});
+
+
+
+Route::group(['prefix' => 'FAQ', 'middleware' => 'auth'], function () {
+
+    Route::get('/list', [FAQController::class, 'index'])->name('faq_list');
+
+    Route::get('/add', [FAQController::class, 'create'])->name('faq_create');
+    Route::post('/store', [FAQController::class, 'store'])->name('faq_store');
+
+    Route::get('/show/{faq}', [FAQController::class, 'show'])->name('faq_details');
+
+    Route::get('/edit/{faq}', [FAQController::class, 'edit'])->name('faq_edit');
+    Route::post('/update/{faq}', [FAQController::class, 'update'])->name('faq_update');
+
+    Route::get('/delete/{faq}', [FAQController::class, 'destroy'])->name('faq_delete');
+
+});
+
+
+Route::group(['prefix' => 'contact-us', 'middleware' => 'auth'], function () {
+
+    Route::get('/list', [ContactUsController::class, 'index'])->name('contact_list');
+
+
+});
+
+Route::group(['prefix' => 'join-us', 'middleware' => 'auth'], function () {
+
+    Route::get('/list', [JoinUsController::class, 'index'])->name('join_list');
+    Route::get('/list-approve', [JoinUsController::class, 'indexApprove'])->name('approve_list');
+    Route::get('/list-reject', [JoinUsController::class, 'indexReject'])->name('reject_list');
+    Route::post('approve/{join}', [JoinUsController::class, 'approve'])->name('join_approve');
+    Route::post('reject/{join}', [JoinUsController::class, 'reject'])->name('join_reject');
+
+
+});
+
+
+Route::group(['prefix' => 'credit', 'middleware' => 'auth'], function () {
+    Route::get('/', [CreditController::class, 'index'])->name('credit_list');
+    Route::post('accept/{credit}', [CreditController::class, 'accept'])->name('accept_payment');
+    Route::post('reject/{credit}', [CreditController::class, 'reject'])->name('reject_payment');
+});
+
 
 Route::get('/home', function(){
     return 'interface';

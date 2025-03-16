@@ -14,9 +14,13 @@ class Credit extends Model implements HasMedia
     protected  $table = 'credits';
 
 
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class,'patient_id');
+    }
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('invoice')
+        $this->addMediaCollection('link')
             ->singleFile();
         }
 }

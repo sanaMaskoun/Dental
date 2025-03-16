@@ -67,7 +67,7 @@
                             class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="{{ route('diagnose_list') }}">Diagnoses List</a></li>
-                                <li><a href="invoices.html">Diagnoses Add</a></li>
+                                <li><a href="{{ route('diagnose_create') }}">Diagnoses Add</a></li>
                             </ul>
                 </li>
 
@@ -78,27 +78,32 @@
                     <a href="#"><i class="fas fa-info-circle"></i>  <span> FAQ</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="subjects.html">FAQ List</a></li>
-                        <li><a href="add-subject.html">FAQ Add</a></li>
+                        <li><a href="{{ route('faq_list') }}">FAQ List</a></li>
+                        <li><a href="{{ route('faq_create') }}">FAQ Add</a></li>
                     </ul>
                 </li>
 
+                <li>
+                    <a href="{{ route('credit_list') }}"><i class="fas fa-file-invoice"></i>  <span> Credit</span> </a>
+                </li>
+
+
+                <li >
+                    <a href="{{ route('contact_list') }}"><i class="fas fa-headset"></i> <span> Contact Us</span> </a>
+
+                </li>
+
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-file-invoice"></i>  <span> Invoices</span> <span
+                    <a href="#"><i class="fas fa-user-plus"></i>  <span> Join Us</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="invoices.html">Invoices List</a></li>
+                        <li><a href="{{ route('join_list') }}">Join Us List</a></li>
+                        <li><a href="{{ route('approve_list') }}">Approve List</a></li>
+                        <li><a href="{{ route('reject_list') }}">Reject List</a></li>
                     </ul>
                 </li>
 
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-headset"></i> <span> Contact As</span> </a>
 
-                </li>
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-user-plus"></i> <span> Join As</span> </a>
-
-                </li>
                 <li class="submenu">
                     <a href="#"><i class="fas fa-book"></i> <span> Bookings</span> </a>
 

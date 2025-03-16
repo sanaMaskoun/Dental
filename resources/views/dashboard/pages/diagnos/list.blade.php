@@ -1,7 +1,6 @@
 @extends('dashboard.master.app')
 
 @section('content')
-
     <div class="page-wrapper">
         <div class="content container-fluid">
             @if (Session::has('success'))
@@ -51,8 +50,13 @@
                                         <tr>
                                             <th>Diagnosis</th>
                                             <th>note</th>
-                                            <th>Doctor</th>
+                                            @role('admin')
+                                                <th>Doctor</th>
+                                            @endrole
                                             <th>Patient</th>
+                                            @role('doctor')
+                                            <th>Action</th>
+@endrole
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -65,17 +69,44 @@
                                                     <a href="{{ route('diagnose_details', $diagnos->id) }}">
                                                         <img style="width: 50px;  height: 50px;  margin-right: 7px; border-radius: 50%;"
                                                             src="{{ asset($diagnos->getFirstMediaUrl('diagnosImg')) }}">
-                                                            {{ Str::limit($diagnos->diagnose, 50) }}
+                                                        {{ Str::limit($diagnos->diagnose, 50) }}
                                                     </a>
 
                                                 </td>
 
                                                 <td>
                                                     {{ Str::limit($diagnos->notes, 50) }}
+                                                    @role('admin')
+                                                    <td>
+                                                        <a href="{{ route('doctor_details', $diagnos->doctor->user->id) }}">
 
-                                                <td>{{ $diagnos->doctor->user->first_name }} {{ $diagnos->doctor->user->last_name }}</td>
-                                                <td>{{ $diagnos->patient->user->first_name }} {{ $diagnos->patient->user->last_name }}</td>
+                                                            {{ $diagnos->doctor->user->first_name }}
+                                                            {{ $diagnos->doctor->user->last_name }}
+                                                        </a>
 
+                                                    </td>
+                                                @endrole
+                                                <td>
+                                                    <a href="{{ route('patient_details', $diagnos->patient->user->id) }}">
+
+                                                        {{ $diagnos->patient->user->first_name }}
+                                                        {{ $diagnos->patient->user->last_name }}
+                                                    </a>
+
+                                                </td>
+                                                @role('doctor')
+
+                                                <td>
+                                                    <a href="{{ route('diagnose_edit', $diagnos->id) }}"
+                                                        class="btn btn-sm bg-danger-light">
+                                                        <i class="feather-edit"></i>
+                                                    </a>
+                                                    <a href="{{ route('diagnose_delete', $diagnos->id) }}"
+                                                        class="btn btn-sm bg-danger-light">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
+                                                </td>
+                                                @endrole
 
                                             </tr>
                                         @endforeach

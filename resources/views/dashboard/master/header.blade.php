@@ -143,7 +143,7 @@
 
             <div class="dropdown-menu">
                 @role('doctor')
-                    <a class="dropdown-item" href="">My Profile</a>
+                    <a class="dropdown-item" href="{{ route('doctor_details', Auth()->user()->id) }}">My Profile</a>
                 @endrole
                 @if (Auth::check())
                     <a class="dropdown-item" href="{{ route('logout') }}"

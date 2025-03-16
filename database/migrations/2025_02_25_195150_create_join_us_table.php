@@ -14,14 +14,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('join_as', function (Blueprint $table) {
+        Schema::create('join_us', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
             $table->string('email')->unique();
             $table->text('subject');
             $table->string('phone');
-            $table->boolean('is_approved')->default(0);
+            $table->boolean('is_see')->default(0);
+            $table->tinyInteger('status')->default(1);
+
             $table->timestamps();
         });
     }
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('join_as');
+        Schema::dropIfExists('join_us');
     }
 };

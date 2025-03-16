@@ -3,28 +3,14 @@
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
-            {{--  <div class="page-header">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="page-sub-header">
-                        <h3 class="page-title">Doctor Details</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Doctors</a></li>
-                            <li class="breadcrumb-item active">Doctor Details</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>  --}}
+
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
 
                             <div class="student-profile-head">
-                                {{--  <div class="profile-bg-img">
-                                <img style="max-height:300px" src="{{ asset('img/medical.webp') }}" alt="Profile">
-                            </div>  --}}
+                              
 
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4">
@@ -104,7 +90,7 @@
                                             </div>
                                             <div class="views-personal">
                                                 <h4>land line</h4>
-                                                <h5>{{ $doctor->doctor->land_line }}</h5>
+                                                <h5>{{ $doctor->doctor?->land_line }}</h5>
                                             </div>
                                         </div>
 
@@ -114,7 +100,7 @@
                                             </div>
                                             <div class="views-personal">
                                                 <h4>lcation</h4>
-                                                <h5>{{ $doctor->doctor->location }}</h5>
+                                                <h5>{{ $doctor->doctor?->location }}</h5>
                                             </div>
                                         </div>
 
@@ -124,7 +110,7 @@
                                             </div>
                                             <div class="views-personal">
                                                 <h4>years f practice</h4>
-                                                <h5>{{ $doctor->doctor->years_of_practice }}</h5>
+                                                <h5>{{ $doctor->doctor?->years_of_practice }}</h5>
                                             </div>
                                         </div>
 
@@ -163,7 +149,7 @@
                                         </div>
                                         <div class="hello-park">
                                             <h5>Hello I am Dr. {{ $doctor->first_name }} {{ $doctor->last_name }}</h5>
-                                            <p>{{ $doctor->doctor->bio }} </p>
+                                            <p>{{ $doctor->doctor?->bio }} </p>
                                         </div>
                                     </div>
                                 </div>
@@ -174,19 +160,19 @@
                                             <div class="heading-detail">
                                                 <h4>Specializations:</h4>
                                             </div>
-    
+
                                             <div class="skill-blk">
                                                 <div class="skill-statistics">
                                                     <div class="skills-head">
                                                         @foreach ($doctor->doctor?->specializations as $specialization)
                                                             <p>{{ $specialization->name }}</p>
                                                         @endforeach
-    
+
                                                     </div>
-    
+
                                                 </div>
-    
-    
+
+
                                             </div>
                                         </div>
                                     </div>

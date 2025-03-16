@@ -29,8 +29,8 @@
 
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group fallback w-100">
-                                            <input type="file" name="doctor_img" class="dropify" >
-                                            @error('doctor_img')
+                                            <input type="file" name="profile" class="dropify" >
+                                            @error('profile')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
                                         </div>
