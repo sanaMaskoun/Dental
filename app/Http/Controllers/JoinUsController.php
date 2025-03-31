@@ -8,7 +8,7 @@ class JoinUsController extends Controller
 {
     public function index()
     {
-        $joins = JoinUs::where('is_see', 0)->get();
+        $joins = JoinUs::where('status', StatusJoinUsEnum::pending)->get();
         return view('dashboard.pages.join.list', compact('joins'));
 
     }
@@ -29,7 +29,6 @@ class JoinUsController extends Controller
     {
 
         $join->user_id     = Auth()->user()->id;
-        $join->is_see = 1;
         $join->status      = StatusJoinUsEnum::approve;
         $join->save();
 
@@ -40,7 +39,6 @@ class JoinUsController extends Controller
     {
 
         $join->user_id     = Auth()->user()->id;
-        $join->is_see = 1;
         $join->status      = StatusJoinUsEnum::reject;
         $join->save();
         return redirect()->back()->with('error', 'Join declined.');

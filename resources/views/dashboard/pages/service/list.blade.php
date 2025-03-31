@@ -52,6 +52,7 @@
                                     <thead class="student-thread">
                                         <tr>
                                             <th>Name</th>
+                                            <th>Description</th>
                                             <th>price</th>
                                             <th>specialization</th>
                                             <th>Action</th>
@@ -60,7 +61,12 @@
                                     <tbody>
                                         @foreach ($services as $service)
                                             <tr>
-                                                <td>{{ $service->name }}</td>
+                                                <td>
+                                                    <img style="width: 50px;  height: 50px;  margin-right: 7px; border-radius: 50%;"
+                                                    src="{{ asset($service->getFirstMediaUrl('img')) }}">
+                                                    {{ $service->name }}
+                                                </td>
+                                                <td>{{ $service->description }}</td>
                                                 <td>{{ $service->price }}</td>
                                                 <td>{{ $service->specialization->name }}</td>
                                                 <td>

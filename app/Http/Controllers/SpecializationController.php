@@ -21,7 +21,8 @@ class SpecializationController extends Controller
     public function store(SpecializationRequest $request)
     {
 
-        Specialization::create($request->validated());
+       $specialization = Specialization::create($request->validated());
+        $specialization->addMedia(request()->file('img'))->toMediaCollection('img');
 
         return redirect()->route('specialization_list')
             ->with('success', 'Added successfully');
@@ -38,7 +39,13 @@ class SpecializationController extends Controller
     {
 
         $specialization->update($request->validated());
+        $hasImage = $specialization->getFirstMediaUrl('img') ? true : false;
 
+        $request->merge(['has_image' => $hasImage]);
+
+        if (! is_null(request()->file('img'))) {
+            $specialization->addMedia(request()->file('img'))->toMediaCollection('img');
+        }
         return redirect()->route('specialization_list')
             ->with('success', 'Modified successfully');
 

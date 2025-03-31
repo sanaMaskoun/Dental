@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('description');
             $table->integer('price');
             $table->foreignIdFor(model: Specialization::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
 

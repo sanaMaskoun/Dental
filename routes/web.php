@@ -2,15 +2,18 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactAsController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CreditController;
 use App\Http\Controllers\DiagnosController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\InterfaceController;
 use App\Http\Controllers\JoinAsController;
 use App\Http\Controllers\JoinUsController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SpecializationController;
 use App\Models\ContactAs;
@@ -28,9 +31,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.master.app');
-})->name('admin_dashboard')->middleware(middleware: 'auth');
+Route::get('/admin-dashboard', [AdminController::class ,'dashboard'])->name('admin_dashboard')->middleware(middleware: 'auth');
 ;
 
 Auth::routes();
@@ -53,7 +54,8 @@ Route::group(['prefix' => 'specialization', 'middleware' => 'auth'], function ()
 
 
 Route::group(['prefix' => 'service', 'middleware' => 'auth'], function () {
-    Route::get('/', [ServiceController::class, 'index'])->name('service_list');
+
+    Route::get('/list' ,[ServiceController::class, 'index'])->name('services_list');
 
     Route::get('/create', [ServiceController::class, 'create'])->name('service_create');
     Route::post('/sotre', [ServiceController::class, 'store'])->name('service_store');
@@ -192,7 +194,42 @@ Route::group(['prefix' => 'credit', 'middleware' => 'auth'], function () {
     Route::post('reject/{credit}', [CreditController::class, 'reject'])->name('reject_payment');
 });
 
+Route::group(['prefix' => 'booking', 'middleware' => 'auth'], function () {
+    Route::get('/', [BookingController::class, 'index'])->name('booking_list');
+    Route::post('completed/{booking}', [BookingController::class, 'completed'])->name('completed_payment');
+});
 
-Route::get('/home', function(){
-    return 'interface';
-})->name('home');
+Route::group(['prefix' => 'payments', 'middleware' => 'auth'], function () {
+    Route::get('/', [PaymentController::class, 'index'])->name('payments_list');
+});
+
+
+
+
+Route::get('/', [InterfaceController::class , 'home'])->name('home');
+Route::get('/about', [InterfaceController::class , 'about'])->name('about');
+
+Route::get('/service', [InterfaceController::class , 'service'])->name('service');
+
+Route::get('/doctor', [InterfaceController::class , 'doctor'])->name('doctor');
+Route::get('/faq', [InterfaceController::class , 'faq'])->name('faq');
+
+Route::get('/contact', [InterfaceController::class , 'contact'])->name('contact');
+Route::post('/contact-store', [InterfaceController::class , 'contactStore'])->name('contact_store')->middleware(middleware: 'auth');
+
+Route::get('/join', [InterfaceController::class , 'join'])->name('join');
+Route::post('/join-store', [InterfaceController::class , 'joinStore'])->name('join_store')->middleware(middleware: 'auth');
+
+
+
+Route::get('/specialization-details/{specialization}', [InterfaceController::class , 'specializationDetails'])->name('specialization_details');
+Route::get('/service-details/{service}', [InterfaceController::class , 'serviceDetails'])->name('service_details');
+Route::get('/doctor-view/{doctor}', [InterfaceController::class , 'doctorView'])->name('doctor_view');
+
+
+Route::get('recharge', [InterfaceController::class , 'recharge'])->name('recharge')->middleware(middleware: 'auth');
+Route::post('recharge-store', [InterfaceController::class , 'rechargeStore'])->name('recharge_store')->middleware(middleware: 'auth');
+
+Route::get('/get-doctors/{serviceId}', [InterfaceController::class, 'getDoctors']);
+Route::get('/get-appointments/{user}', [InterfaceController::class, 'getAppointments']);
+Route::post('/book-appointment', [InterfaceController::class, 'bookAppointment'])->middleware(middleware: 'auth')->name('book_appointment');

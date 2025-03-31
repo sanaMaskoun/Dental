@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
+
+    public function dashboard()
+    {
+        return view('dashboard.pages.admin.dashboard');
+    }
     public function toggleStatus(Request $request, User $user)
     {
 
@@ -14,6 +20,6 @@ class AdminController extends Controller
             $user->save();
 
             return redirect()->back()->with('success', 'Status updated successfully.');
-        
+
     }
 }

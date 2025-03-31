@@ -4,12 +4,9 @@
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
-                <li class="menu-title">
-                    <span>Main Menu</span>
-                </li>
 
-                <li class="submenu">
-                    <a href="#"><i class="feather-grid"></i> <span> Dashboard</span></a>
+                <li>
+                    <a href="{{ route('admin_dashboard') }}"><i class="feather-grid"></i> <span> Dashboard</span></a>
                 </li>
 
 
@@ -26,7 +23,7 @@
                     <a href="#"><i class="fas fa-hand-holding-medical"></i> <span> service</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="{{ route('service_list') }}">services List</a></li>
+                        <li><a href="{{ route('services_list') }}">services List</a></li>
                         <li><a href="{{ route('service_create') }}">service Add</a></li>
                     </ul>
                 </li>
@@ -104,12 +101,12 @@
                 </li>
 
 
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-book"></i> <span> Bookings</span> </a>
+                <li>
+                    <a href="{{ route('booking_list') }}"><i class="fas fa-book"></i> <span> Bookings</span> </a>
 
                 </li>
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-money-bill-wave"></i> <span> Payments </span> </a>
+                <li>
+                    <a href="{{ route('payments_list') }}"><i class="fas fa-money-bill-wave"></i> <span> Payments </span> </a>
 
                 </li>
 

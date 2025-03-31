@@ -8,4 +8,5 @@ final class StatusJoinUsEnum extends EnumEnum
 {
     const reject = 1;
     const approve = 2;
+    const pending =3;
 }

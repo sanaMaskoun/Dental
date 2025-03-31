@@ -24,9 +24,10 @@ class ServiceController extends Controller
     public function store(ServiceRequest $request)
     {
 
-        Service::create($request->validated());
+        $service = Service::create($request->validated());
+        $service->addMedia(request()->file('img'))->toMediaCollection('img');
 
-        return redirect()->route('service_list')
+        return redirect()->route('services_list')
             ->with('success', 'Added successfully');
 
     }
@@ -43,7 +44,14 @@ class ServiceController extends Controller
 
         $service->update($request->validated());
 
-        return redirect()->route('service_list')
+        $hasImage = $service->getFirstMediaUrl('img') ? true : false;
+
+        $request->merge(['has_image' => $hasImage]);
+
+        if (! is_null(request()->file('img'))) {
+            $service->addMedia(request()->file('img'))->toMediaCollection('img');
+        }
+        return redirect()->route('services_list')
             ->with('success', 'Modified successfully');
 
     }
@@ -52,7 +60,7 @@ class ServiceController extends Controller
 
         $service->delete();
 
-        return redirect()->route('service_list')
+        return redirect()->route('services_list')
             ->with('success', 'delete successfully');
 
     }

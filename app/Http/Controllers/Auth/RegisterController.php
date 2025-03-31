@@ -62,6 +62,7 @@ class RegisterController extends Controller
             'user_id' => $user->id,
             'account' => 0
         ]);
+        $user->assignRole('patient');
 
         return $user;
 }

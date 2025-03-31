@@ -36,6 +36,16 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
+                                        <label> Description <span class="login-danger">*</span></label>
+                                        <input type="text" class="form-control" name="description"
+                                            value="{{ $service->description }}">
+                                        @error('description')
+                                            <small class="form-text text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
                                         <label> Price <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control" name="price"
                                             value="{{ $service->price }}" >
@@ -47,11 +57,29 @@
 
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
+                                        <label>Service pictures <span class="login-danger">*</span></label>
+
+                                        @if ($service->getFirstMediaUrl('img'))
+                                            <div style="margin-bottom: 10px;">
+                                                <img src="{{ $service->getFirstMediaUrl('img') }}" alt="Service Image" style="max-width: 100px; border-radius: 5px;">
+                                            </div>
+                                        @endif
+
+                                        <input type="file" class="form-control" name="img">
+
+                                        @error('img')
+                                            <small class="form-text text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
                                         <label>Specialization <span class="login-danger">*</span></label>
                                         <select class="form-control" name="specialization" required>
                                             <option value="" disabled selected>Select Specialization</option>
                                             @foreach($specializations as $specialization)
-                                            <option value="{{ $specialization->id }}" 
+                                            <option value="{{ $specialization->id }}"
                                                 {{ (old('specialization', $service->specialization_id) == $specialization->id) ? 'selected' : '' }}>
                                                 {{ $specialization->name }}
                                             </option>
@@ -62,7 +90,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                              
+
                                 <div class="col-12">
                                     <div class="student-submit">
                                         <button type="submit" class="btn btn-primary">Submit</button>

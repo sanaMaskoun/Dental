@@ -30,7 +30,6 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card card-table">
@@ -41,13 +40,11 @@
                                     <div class="col">
                                         <h3 class="page-title">Credits List</h3>
                                     </div>
-
                                 </div>
                             </div>
 
                             <div class="table-responsive">
-                                <table
-                                    class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                                <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
                                             <th>User name </th>
@@ -57,50 +54,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-
                                         @foreach ($credits as $credit)
                                             <tr>
-
-                                                <td><strong>{{ $credit->patient?->user->first_name }}
-                                                        {{ $credit->patient?->user->last_name }}</strong></td>
+                                                <td><strong>{{ $credit->patient?->user->first_name }} {{ $credit->patient?->user->last_name }}</strong></td>
                                                 <td><strong>{{ $credit->amount }}</strong></td>
-
                                                 <td>
-                                                    <img style="width: 39px; height: 39px; border-radius: 50%; margin-right: 7px; cursor: pointer;"
-                                                        src="{{ asset($credit->getFirstMediaUrl('link')) }}"
-                                                        data-toggle="modal" data-target="#imageModal"
-                                                        onclick="showModalImage('{{ asset($credit->getFirstMediaUrl('link')) }}')">
+                                                    <a href="{{ asset($credit->getFirstMediaUrl('link')) }}" data-lightbox="image-{{ $credit->id }}">
+                                                        <img style="width: 39px; height: 39px; border-radius: 50%; margin-right: 7px; cursor: pointer;"
+                                                             src="{{ asset($credit->getFirstMediaUrl('link')) }}"
+                                                             alt="photo">
+                                                    </a>
                                                 </td>
-
-
-
                                                 <td>
                                                     <div style="display: flex;">
-                                                        <form action="{{ route('accept_payment', $credit->id) }}"
-                                                            method="post">
+                                                        <form action="{{ route('accept_payment', $credit->id) }}" method="post">
                                                             @csrf
-                                                            <button type="submit"
-                                                                style=" background-color: rgb(193, 244, 205); "
-                                                                class="btn btn-success">accepte</button>
+                                                            <button type="submit" style="background-color: rgb(193, 244, 205);" class="btn btn-success">accepte</button>
                                                         </form>
-
-                                                        <form style="margin-left: 10px;"
-                                                            action="{{ route('reject_payment', $credit->id) }}"
-                                                            method="post">
+                                                        <form style="margin-left: 10px;" action="{{ route('reject_payment', $credit->id) }}" method="post">
                                                             @csrf
-                                                            <button type="submit"
-                                                                style="   background-color: rgb(241, 160, 160);
-                                                                border: 1px solid red;"
-                                                                class="btn btn-danger">reject</button>
+                                                            <button type="submit" style="background-color: rgb(241, 160, 160); border: 1px solid red;" class="btn btn-danger">reject</button>
                                                         </form>
                                                     </div>
                                                 </td>
                                             </tr>
                                         @endforeach
-
-
-
                                     </tbody>
                                 </table>
                             </div>
@@ -108,31 +86,11 @@
                     </div>
                 </div>
             </div>
-
-            <div class="modal fade" id="imageModal" style="z-index: 9999;" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">photo </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body text-center">
-                            <img id="modalImage" style="max-width: 100%;" src="" alt="photo ">
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-
-
-
     </div>
 
-    <script>
-        function showModalImage(imageUrl) {
-            $('#modalImage').attr('src', imageUrl);
-        }
-    </script>
+    <!-- Lightbox CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 @endsection

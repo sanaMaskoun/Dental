@@ -53,7 +53,8 @@
                                     <thead class="student-thread">
                                         <tr>
                                             <th>Name</th>
-                                            
+                                            <th>Description</th>
+
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -63,10 +64,15 @@
                                         @foreach ($specializations as $specialization)
                                             <tr>
 
-                                               
 
-                                                <td>{{ $specialization->name }}</td>
-                                
+
+                                                <td>
+                                                    <img style="width: 50px;  height: 50px;  margin-right: 7px; border-radius: 50%;"
+                                                    src="{{ asset($specialization->getFirstMediaUrl('img')) }}">
+
+                                                    {{ $specialization->name }}</td>
+                                                <td>{{ $specialization->description }}</td>
+
 
                                                 <td>
                                                     <a href="{{ route('specialization_edit', $specialization->id) }}"
@@ -77,9 +83,9 @@
                                                         class="btn btn-sm bg-danger-light">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </a>
-                                                   
+
                                                 </td>
-                                               
+
 
                                             </tr>
                                         @endforeach

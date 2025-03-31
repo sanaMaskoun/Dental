@@ -36,7 +36,7 @@ class LoginController extends Controller
                  return redirect()->route('doctor_dashboard');
             }
             else if (auth()->user()->type == UserTypeEnum::patient) {
-                 return redirect()->route('index');
+                 return redirect()->route('home');
             }
         }else{
             return redirect()->route('login')

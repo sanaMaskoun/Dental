@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Dental</title>
+    <title>DentaCare</title>
 
-    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
+    {{--  <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">  --}}
 
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"
@@ -89,7 +89,7 @@
 
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/ar.js'></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{{--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  --}}
 
     {{--  <script src="{{ asset('plugins/fullcalendar/fullcalendar.min.js') }}"></script>
     <script src="{{ asset('plugins/fullcalendar/jquery.fullcalendar.js') }}"></script>  --}}

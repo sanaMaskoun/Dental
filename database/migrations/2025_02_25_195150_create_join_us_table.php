@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->text('subject');
             $table->string('phone');
-            $table->boolean('is_see')->default(0);
+            // $table->boolean('is_see')->default(0);
             $table->tinyInteger('status')->default(1);
 
             $table->timestamps();
