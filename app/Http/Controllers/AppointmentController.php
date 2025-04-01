@@ -10,8 +10,7 @@ class AppointmentController extends Controller
     public function index()
     {
 
-        $appointments = Appointment::get();
-        return view('dashboard.pages.appointment.list', compact('appointments'));
+        return view('dashboard.pages.appointment.list');
     }
 
     public function getAppointments()
@@ -98,12 +97,7 @@ class AppointmentController extends Controller
 
     public function destroy(Appointment $appointment)
     {
-        if (!$appointment) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Appointment not found.'
-            ], 404);
-        }
+
 
         $appointment->delete();
 

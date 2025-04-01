@@ -16,6 +16,12 @@ class DoctorController extends Controller
 
     public function dashboard()
     {
+        $num_patients        = User::where('type', UserTypeEnum::patient)->where('is_active', true)->count();
+        $num_specializations = Specialization::count();
+        $num_services        = Service::count();
+        $allMonths = collect(range(1, 12))->mapWithKeys(function ($month) {
+            return [$month => 0];
+        });
         return view('dashboard.pages.doctor.dashboard');
 
     }

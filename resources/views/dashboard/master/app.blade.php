@@ -32,6 +32,7 @@
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' />
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.css">
 
 
 
@@ -89,10 +90,8 @@
 
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/ar.js'></script>
-{{--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  --}}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.js"></script>
 
-    {{--  <script src="{{ asset('plugins/fullcalendar/fullcalendar.min.js') }}"></script>
-    <script src="{{ asset('plugins/fullcalendar/jquery.fullcalendar.js') }}"></script>  --}}
 
     <script src="{{ asset('js/script.js') }}"></script>
 </body>

@@ -77,19 +77,30 @@
             eventClick: function(info) {
                 const appointmentId = info.event.id;
 
+                const startLocal = new Date(info.event.start);
+                const endLocal = info.event.end ? new Date(info.event.end) : new Date(info.event
+                    .start);
+
+                const formatDate = (date) => date.toISOString().split('T')[0];
+                const formatTime = (date) => {
+                    const hours = String(date.getHours()).padStart(2, '0');
+                    const minutes = String(date.getMinutes()).padStart(2, '0');
+                    const seconds = String(date.getSeconds()).padStart(2, '0');
+                    return `${hours}:${minutes}:${seconds}`;
+                };
+
                 Swal.fire({
                     title: 'Edit Appointment',
-                    html:
-                        `<label>Date:</label><br>
-                        <input type="date" id="newDate" class="swal2-input" value="${info.event.start.toISOString().substr(0, 10)}"><br>
+                    html: `<label>Date:</label><br>
+                        <input type="date" id="newDate" class="swal2-input" value="${formatDate(startLocal)}"><br>
                         <label>Start Time:</label><br>
-                        <input type="time" id="newStartTime" class="swal2-input" value="${info.event.start.toISOString().substr(11, 8)}"><br>
+                        <input type="time" id="newStartTime" class="swal2-input" value="${formatTime(startLocal)}"><br>
                         <label>End Time:</label><br>
-                        <input type="time" id="newEndTime" class="swal2-input" value="${info.event.end.toISOString().substr(11, 8)}">`,
+                        <input type="time" id="newEndTime" class="swal2-input" value="${formatTime(endLocal)}">`,
                     showCancelButton: true,
                     confirmButtonText: 'Save',
                     cancelButtonText: 'Cancel',
-                    showDenyButton: true, // ✅ زر الحذف
+                    showDenyButton: true,
                     denyButtonText: 'Delete',
                     preConfirm: () => {
                         return {
@@ -101,26 +112,30 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         fetch(`/appointment/update/${appointmentId}`, {
-                            method: "PUT",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-                                "X-Requested-With": "XMLHttpRequest"
-                            },
-                            body: JSON.stringify(result.value)
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.status === "success") {
-                                Swal.fire("Success", "Appointment updated successfully!", "success");
-                                calendar.refetchEvents(); // ✅ تحديث التقويم
-                            } else {
-                                Swal.fire("Error", data.message, "error");
-                            }
-                        })
-                        .catch(error => Swal.fire("Error", "Something went wrong!", "error"));
+                                method: "PUT",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "X-CSRF-TOKEN": document.querySelector(
+                                        'meta[name="csrf-token"]').getAttribute(
+                                        "content"),
+                                    "X-Requested-With": "XMLHttpRequest"
+                                },
+                                body: JSON.stringify(result.value)
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === "success") {
+                                    Swal.fire("Success",
+                                        "Appointment updated successfully!",
+                                        "success");
+                                    calendar.refetchEvents();
+                                } else {
+                                    Swal.fire("Error", data.message, "error");
+                                }
+                            })
+                            .catch(error => Swal.fire("Error", "Something went wrong!",
+                                "error"));
                     } else if (result.isDenied) {
-                        // ✅ تنفيذ الحذف عند الضغط على "Delete"
                         Swal.fire({
                             title: "Are you sure?",
                             text: "This appointment will be deleted permanently.",
@@ -131,22 +146,29 @@
                         }).then((confirmResult) => {
                             if (confirmResult.isConfirmed) {
                                 fetch(`/appointment/delete/${appointmentId}`, {
-                                    method: "DELETE",
-                                    headers: {
-                                        "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-                                        "X-Requested-With": "XMLHttpRequest"
-                                    }
-                                })
-                                .then(response => response.json())
-                                .then(data => {
-                                    if (data.status === "success") {
-                                        Swal.fire("Deleted!", "Appointment has been deleted.", "success");
-                                        calendar.refetchEvents(); // ✅ تحديث التقويم بعد الحذف
-                                    } else {
-                                        Swal.fire("Error", data.message, "error");
-                                    }
-                                })
-                                .catch(error => Swal.fire("Error", "Something went wrong!", "error"));
+                                        method: "DELETE",
+                                        headers: {
+                                            "X-CSRF-TOKEN": document
+                                                .querySelector(
+                                                    'meta[name="csrf-token"]')
+                                                .getAttribute("content"),
+                                            "X-Requested-With": "XMLHttpRequest"
+                                        }
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.status === "success") {
+                                            Swal.fire("Deleted!",
+                                                "Appointment has been deleted.",
+                                                "success");
+                                            calendar.refetchEvents();
+                                        } else {
+                                            Swal.fire("Error", data.message,
+                                                "error");
+                                        }
+                                    })
+                                    .catch(error => Swal.fire("Error",
+                                        "Something went wrong!", "error"));
                             }
                         });
                     }
@@ -156,5 +178,4 @@
 
         calendar.render();
     });
-
 </script>
