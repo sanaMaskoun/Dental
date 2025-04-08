@@ -79,10 +79,18 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="page-title">Patient</h3>
+                        @role('doctor')
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active">Patients</li>
                         </ul>
+                        @endrole
+                        @role('admin')
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Patients</li>
+                        </ul>
+                        @endrole
                     </div>
                 </div>
             </div>
@@ -121,25 +129,25 @@
                                             <tr>
 
                                                 <td>
-                                                    <a href="{{ route('patient_details', $patient->id) }}">
+                                                    <a href="{{ route('patient_details', $patient->user->id) }}">
                                                         <img style="width: 50px;  height: 50px;  margin-right: 7px; border-radius: 50%;"
-                                                            src="{{ asset($patient->getFirstMediaUrl('profile')) }}">
-                                                        {{ $patient->first_name }} {{ $patient->last_name }}
+                                                            src="{{ asset($patient->user->getFirstMediaUrl('profile')) }}">
+                                                        {{ $patient->user->first_name }} {{ $patient->user->last_name }}
                                                     </a>
 
                                                 </td>
 
-                                                <td>{{ $patient->phone }}</td>
-                                                <td>{{ $patient->email }}</td>
-                                                <td>{{ $patient->patient->account }}</td>
+                                                <td>{{ $patient->user->phone }}</td>
+                                                <td>{{ $patient->user->email }}</td>
+                                                <td>{{ $patient->account }}</td>
 
                                                 <td>
-                                                    <form method="POST" action="{{ route('toggleStatus', $patient->id) }}">
+                                                    <form method="POST" action="{{ route('toggleStatus', $patient->user->id) }}">
                                                         @csrf
                                                         <label class="switch">
                                                             <input type="checkbox" name="status"
                                                                 onchange="this.form.submit()"
-                                                                {{ $patient->is_active ? 'checked' : '' }}>
+                                                                {{ $patient->user->is_active ? 'checked' : '' }}>
                                                             <span class="slider round"></span>
                                                         </label>
                                                     </form>

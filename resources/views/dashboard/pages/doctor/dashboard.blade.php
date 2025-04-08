@@ -20,7 +20,7 @@
 
 
             <div class="row">
-                <div class="col-xl-4 col-sm-6 col-12 d-flex">
+                <div class="col-xl-3 col-sm-6 col-12 d-flex">
                     <div class="card bg-comman w-100">
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-sm-6 col-12 d-flex">
+                <div class="col-xl-3 col-sm-6 col-12 d-flex">
                     <div class="card bg-comman w-100">
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
@@ -50,7 +50,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-sm-6 col-12 d-flex">
+
+                <div class="col-xl-3 col-sm-6 col-12 d-flex">
                     <div class="card bg-comman w-100">
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
@@ -61,6 +62,23 @@
                                 </div>
                                 <div class="db-icon">
                                     <i class="fas fa-hand-holding-medical" style="color: black;"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                    <div class="card bg-comman w-100">
+                        <div class="card-body">
+                            <div class="db-widgets d-flex justify-content-between align-items-center">
+                                <div class="db-info">
+                                    <h6>Incoms</h6>
+                                    <h3>{{ $doctor_earnings }}</h3>
+
+                                </div>
+                                <div class="db-icon">
+                                    <i class="fas fa-money-bill-alt" style="color: black;"></i>
                                 </div>
                             </div>
 
@@ -88,8 +106,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div id="registrations-chart"></div>
-                                     </div>
+                        <div id="patients-chart"></div>
+                    </div>
                 </div>
 
             </div>
@@ -100,35 +118,34 @@
 
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var options = {
-                series: [{
-                    name: 'Doctors',
-                    data: @json(array_values($doctorsData))
-                }, {
-                    name: 'Patients',
-                    data: @json(array_values($patientsData))
-                }],
-                chart: {
-                    type: 'area',
-                    height: 350,
-                    toolbar: { show: true }
-                },
-                colors: ['#3F80EA', '#66CB9F'],
-                dataLabels: { enabled: false },
-                stroke: { curve: 'smooth' },
-                xaxis: {
-                    categories: @json(array_values($months)),
-                    labels: { trim: false }
-                },
-                tooltip: {
-                    x: { format: 'MMM' }
-                }
-            };
 
-            var chart = new ApexCharts(document.getElementById("registrations-chart"), options);
-            chart.render();
-        });
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var options = {
+            series: [{
+                name: 'Patients',
+                data: @json(array_values($patients_data))
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            colors: ['#3F80EA'],
+            xaxis: {
+                categories: @json(array_values($months))
+            },
+            tooltip: {
+                y: {
+                    formatter: function(value) {
+                        return value + ' patient(s)';
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.getElementById("patients-chart"), options);
+        chart.render();
+    });
+    </script>
 @endsection

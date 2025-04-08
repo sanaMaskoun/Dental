@@ -23,6 +23,10 @@ class Service extends Model implements HasMedia
         return $this->belongsToMany(Doctor::class, 'doctor_service');
 
     }
+    public function bookings()
+{
+    return $this->hasMany(Booking::class ,'service_id');
+}
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('img')->singleFile();

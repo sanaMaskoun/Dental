@@ -31,7 +31,7 @@
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="javascript:;"><i class="flag flag-lr me-2"></i>English</a>
-                <a class="dropdown-item" href="javascript:;"><i class="flag flag-cn me-2"></i>Turkce</a>
+                <a class="dropdown-item" href="javascript:;"><img style="max-width: 25px; height: auto; margin-right: 10px;" src="{{ asset('img/Flag_of_Turkey.svg.webp') }}"> Turkce</a>
             </div>
         </li>
 

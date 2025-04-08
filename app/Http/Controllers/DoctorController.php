@@ -1,10 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Enums\StatusBookingEnum;
 use App\Enums\UserTypeEnum;
 use App\Http\Requests\DoctorEditProfileRequest;
 use App\Http\Requests\DoctorEditRequest;
 use App\Http\Requests\DoctorRequest;
+use App\Models\Booking;
+use App\Models\Diagnos;
 use App\Models\Doctor;
 use App\Models\Service;
 use App\Models\Specialization;
@@ -16,16 +19,62 @@ class DoctorController extends Controller
 
     public function dashboard()
     {
-        $num_patients        = User::where('type', UserTypeEnum::patient)->where('is_active', true)->count();
-        $num_specializations = Specialization::count();
-        $num_services        = Service::count();
-        $allMonths = collect(range(1, 12))->mapWithKeys(function ($month) {
+        $doctor = Auth()->user()->doctor;
+
+        $num_patients = Diagnos::where('doctor_id', $doctor->id)
+                        ->distinct('patient_id')
+                        ->count('patient_id');
+
+        $num_specializations = Specialization::whereHas('doctors', function ($query) use ($doctor) {
+            $query->where('doctors.id', $doctor->id);
+        })->count();
+
+        $num_services = Service::whereHas('doctors', function ($query) use ($doctor) {
+            $query->where('doctors.id', $doctor->id);
+        })->count();
+
+        $patients_per_month = Diagnos::where('doctor_id', $doctor->id)
+            ->selectRaw('MONTH(created_at) as month, COUNT(DISTINCT patient_id) as count')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->pluck('count', 'month')
+            ->toArray();
+
+        $all_months = collect(range(1, 12))->mapWithKeys(function ($month) {
             return [$month => 0];
         });
-        return view('dashboard.pages.doctor.dashboard');
 
+        $patients_data = array_replace($all_months->toArray(), $patients_per_month);
+        ksort($patients_data);
+
+
+        $months = [
+            1 => 'Jan', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr',
+            5 => 'May', 6 => 'Jun', 7 => 'Jul', 8 => 'Aug',
+            9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dec'
+        ];
+
+        $bookings = Booking::with('service')
+        ->where('doctor_id', $doctor->id)
+        ->where('status', StatusBookingEnum::complete)
+        ->get();
+
+    $total_revenue = $bookings->sum(function ($booking) {
+        return $booking->service->price;
+    });
+
+    $doctor_earnings = $total_revenue * 0.95; 
+
+
+        return view('dashboard.pages.doctor.dashboard', compact(
+            'num_patients',
+            'num_services',
+            'num_specializations',
+            'patients_data',
+            'months',
+            'doctor_earnings'
+        ));
     }
-
 
     public function index(Request $request)
     {
@@ -55,15 +104,15 @@ class DoctorController extends Controller
     public function show(User $doctor)
     {
 
-         return view('dashboard.pages.doctor.show', compact('doctor'));
+        return view('dashboard.pages.doctor.show', compact('doctor'));
     }
     public function edit(User $doctor)
     {
-         if ($doctor->is_active == 0) {
+        if ($doctor->is_active == 0) {
             return redirect()->route('doctor_list')->with('error', 'The account you want to modify is inactive');
+        } else {
+            return view('dashboard.pages.doctor.edit', compact('doctor'));
         }
-        else
-        return view('dashboard.pages.doctor.edit', compact('doctor'));
 
     }
 
@@ -83,14 +132,13 @@ class DoctorController extends Controller
         return redirect()->route('doctor_list')->with('success', 'Modified successfully');
     }
 
-
     public function editProfile(User $doctor)
     {
 
-            $services         = Service::all();
-            $selected_services = $doctor->doctor?->services->pluck('id')->toArray();
+        $services          = Service::all();
+        $selected_services = $doctor->doctor?->services->pluck('id')->toArray();
 
-            return view('dashboard.pages.doctor.editProfile', compact(['doctor', 'services', 'selected_services']));
+        return view('dashboard.pages.doctor.editProfile', compact(['doctor', 'services', 'selected_services']));
 
     }
 
@@ -105,23 +153,21 @@ class DoctorController extends Controller
 
         $this->assignSpecialtiesToDoctor($doctor);
 
-
-
-        if (!is_null(request()->file('profile'))) {
+        if (! is_null(request()->file('profile'))) {
             $user->clearMediaCollection('profile');
             $user->addMedia($request->file('profile'))->toMediaCollection('profile');
         }
 
-            return redirect()->route('doctor_details', Auth()->user()->id)
-                ->with('success', 'Modified successfully');
+        return redirect()->route('doctor_details', Auth()->user()->id)
+            ->with('success', 'Modified successfully');
 
     }
 
     protected function assignSpecialtiesToDoctor(Doctor $doctor)
-{
-    $specializations = $doctor->services->pluck('specialization_id')->unique();
+    {
+        $specializations = $doctor->services->pluck('specialization_id')->unique();
 
-    $doctor->specializations()->sync($specializations);
-}
+        $doctor->specializations()->sync($specializations);
+    }
 
 }

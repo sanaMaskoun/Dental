@@ -18,6 +18,12 @@ class Specialization extends Model implements HasMedia
         return $this->hasMany(Service::class ,'specialization_id');
     }
 
+    public function doctors()
+    {
+        return $this->belongsToMany(Doctor::class ,'doctor_specialization');
+
+    }
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('img')->singleFile();

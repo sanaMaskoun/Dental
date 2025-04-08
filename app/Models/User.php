@@ -38,6 +38,10 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasOne(Patient::class , 'user_id');
     }
+    public function diagnoses()
+{
+    return $this->hasMany(Diagnos::class, 'patient_id');
+}
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('profile')

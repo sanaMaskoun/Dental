@@ -20,10 +20,18 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="page-title">Diagnosis</h3>
+                        @role('doctor')
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active">Diagnosis</li>
                         </ul>
+                        @endrole
+                        @role('admin')
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Diagnosis</li>
+                        </ul>
+                        @endrole
                     </div>
                 </div>
             </div>

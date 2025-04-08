@@ -20,10 +20,18 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="page-title">Bookings</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Bookings</li>
-                        </ul>
+                        @role('doctor')
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Payments</li>
+                            </ul>
+                        @endrole
+                        @role('admin')
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Payments</li>
+                            </ul>
+                        @endrole
                     </div>
                 </div>
             </div>
@@ -97,7 +105,8 @@
                                                         <form action="{{ route('completed_payment', $booking->id) }}"
                                                             method="post">
                                                             @csrf
-                                                            <button type="submit" sstyle="
+                                                            <button type="submit"
+                                                                sstyle="
                                                             background-color: green;
                                                             color: white;
                                                             padding: 8px;

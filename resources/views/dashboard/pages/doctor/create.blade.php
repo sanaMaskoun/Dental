@@ -9,7 +9,7 @@
                     <div class="col">
                         <h3 class="page-title">Add Doctors</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Doctors</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Doctors</a></li>
                             <li class="breadcrumb-item active">Add Doctor</li>
                         </ul>
                     </div>

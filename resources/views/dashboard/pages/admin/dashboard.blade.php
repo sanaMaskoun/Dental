@@ -70,12 +70,12 @@
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
-                                    <h6>services</h6>
-                                    <h3>{{ $num_services }}</h3>
+                                    <h6>Incoms</h6>
+                                    <h3>{{ $admin_earnings }}</h3>
 
                                 </div>
                                 <div class="db-icon">
-                                    <i class="fas fa-hand-holding-medical" style="color: black;"></i>
+                                    <i class="fas fa-money-bill-alt" style="color: black;"></i>
                                 </div>
                             </div>
 
@@ -104,7 +104,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div id="registrations-chart"></div>                     </div>
+                        <div id="registrations-chart"></div>
+                    </div>
                 </div>
 
             </div>
@@ -128,22 +129,32 @@
                 chart: {
                     type: 'area',
                     height: 350,
-                    toolbar: { show: true }
+                    toolbar: {
+                        show: true
+                    }
                 },
                 colors: ['#3F80EA', '#66CB9F'],
-                dataLabels: { enabled: false },
-                stroke: { curve: 'smooth' },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth'
+                },
                 xaxis: {
                     categories: @json(array_values($months)),
-                    labels: { trim: false }
+                    labels: {
+                        trim: false
+                    }
                 },
                 tooltip: {
-                    x: { format: 'MMM' }
+                    x: {
+                        format: 'MMM'
+                    }
                 }
             };
 
             var chart = new ApexCharts(document.getElementById("registrations-chart"), options);
             chart.render();
         });
-        </script>
+    </script>
 @endsection
