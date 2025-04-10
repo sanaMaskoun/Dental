@@ -12,17 +12,19 @@ class PatientController extends Controller
     {
         if (Auth()->user()->type == UserTypeEnum::admin) {
             $patients = User::where('type', UserTypeEnum::patient)->get();
+            return view('dashboard.pages.patient.listAdmin', compact('patients'));
 
         } else {
-            $patients = Patient::whereHas('diagnoses', function($query) {
+            $patients = Patient::whereHas('diagnoses', function ($query) {
                 $query->where('doctor_id', Auth()->user()->doctor->id);
             })
-            ->with(['user', 'diagnoses' => function($query) {
-                $query->where('doctor_id', Auth()->user()->doctor->id);
-            }])
-            ->get();
+                ->with(['user', 'diagnoses' => function ($query) {
+                    $query->where('doctor_id', Auth()->user()->doctor->id);
+                }])
+                ->get();
+            return view('dashboard.pages.patient.list', compact('patients'));
+
         }
-        return view('dashboard.pages.patient.list', compact('patients'));
     }
 
     public function show(User $patient)
