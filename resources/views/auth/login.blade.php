@@ -15,14 +15,14 @@
                 </div>
                 <div class="login-right">
                     <div class="login-right-wrap">
-                        <h1>Welcome to Dentist Clinic</h1>
-                        <p class="account-subtitle">Need an account? <a href="{{ route('register') }}">Sign Up</a></p>
-                        <h2>Sign in</h2>
+                        <h1>{{ __('auth.welcome_login') }}</h1>
+                        <p class="account-subtitle">{{ __('auth.need_account') }}? <a href="{{ route('register') }}">{{ __('auth.sign_up') }}</a></p>
+                        <h2>{{ __('auth.sign_in') }}</h2>
 
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group">
-                                <label>Email <span class="login-danger">*</span></label>
+                                <label>{{ __('pages.email') }} <span class="login-danger">*</span></label>
                                 <input class="form-control" type="email" name="email" value="{{ old('email') }}" required autofocus>
                                 <span class="profile-views"><i class="fas fa-user-circle"></i></span>
 
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Password <span class="login-danger">*</span></label>
+                                <label>{{ __('pages.password') }} <span class="login-danger">*</span></label>
                                 <input class="form-control pass-input" type="password" name="password" required>
                                 <span class="profile-views feather-eye toggle-password"></span>
                                 @error('password')
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                <button type="submit" class="btn btn-primary btn-block">{{ __('pages.login') }}</button>
                             </div>
                         </form>
                     </div>

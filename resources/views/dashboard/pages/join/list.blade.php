@@ -23,10 +23,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Join Us</h3>
+                        <h3 class="page-title">{{__('pages.join_us')}}</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Join Us</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">{{__('pages.dashboard')}}</a></li>
+                            <li class="breadcrumb-item active">{{__('pages.join_us')}}</li>
                         </ul>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Join Us List</h3>
+                                        <h3 class="page-title">{{__('pages.join_us_list')}}</h3>
                                     </div>
 
                                 </div>
@@ -52,13 +52,13 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
-                                            <th>name</th>
-                                            <th>Email</th>
-                                            <th> subject</th>
-                                            <th> mobile </th>
-                                            <th> Date  </th>
+                                            <th>{{__('pages.name')}}</th>
+                                            <th>{{__('pages.email')}}</th>
+                                            <th> {{__('pages.subject')}}</th>
+                                            <th> {{__('pages.mobile')}} </th>
+                                            <th> {{__('pages.date')}}  </th>
 
-                                            <th>actions</th>
+                                            <th>{{__('pages.action')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -81,7 +81,7 @@
                                                               @csrf
                                                               <button type="submit"
                                                                   style=" background-color: rgb(193, 244, 205);"
-                                                                  class="btn btn-success">accepte</button>
+                                                                  class="btn btn-success">{{__('pages.accepte')}}</button>
                                                           </form>
 
                                                           <form
@@ -91,7 +91,7 @@
                                                               <button type="submit"
                                                                   style="    background-color: rgb(241, 160, 160);
                                                           border: 1px solid red;"
-                                                                  class="btn btn-danger">reject</button>
+                                                                  class="btn btn-danger">{{__('pages.reject')}}</button>
                                                           </form>
                                                       </div>
                                                   </td>

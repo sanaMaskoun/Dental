@@ -36,13 +36,11 @@
             <div class="container">
                 <div class="row slider-text align-items-center" data-scrollax-parent="true">
                     <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Modern Dentistry
-                            in a Calm and Relaxed Environment</h1>
-                        <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">A small river
-                            named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ __('pages.title_1_home') }}</h1>
+                        <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ __('pages.description_doctors') }}</p>
                         <button id="bookAppointmentBtn" class="btn btn-primary px-4 py-3" data-toggle="modal"
                             data-target="#bookingModal">
-                            Book an Appointment
+                            {{ __('pages.book_appointment') }}
                         </button>
                     </div>
                 </div>
@@ -54,14 +52,12 @@
             <div class="container">
                 <div class="row slider-text align-items-center" data-scrollax-parent="true">
                     <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Modern Achieve
-                            Your Desired Perfect Smile</h1>
-                        <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary
-                            regelialia.</p>
+                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ __('pages.title_2_home') }}</h1>
+                        <p class="mb-4">{{ __('pages.description_doctors') }}</p>
 
                         <button id="bookAppointmentBtn" class="btn btn-primary px-4 py-3" data-toggle="modal"
                             data-target="#bookingModal">
-                            Book an Appointment
+                            {{ __('pages.book_appointment') }}
                         </button>
                     </div>
                 </div>
@@ -73,7 +69,7 @@
         <div class="container">
             <div class="row justify-content-center mb-5 pb-5">
                 <div class="col-md-7 text-center heading-section ftco-animate">
-                    <h2 class="mb-2">Our Specialization</h2>
+                    <h2 class="mb-2"> {{ __('pages.our_specialization') }}  </h2>
                 </div>
             </div>
 
@@ -106,51 +102,47 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="bookingModalLabel">Book an Appointment</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="bookingModalLabel">{{ __('pages.book_appointment') }}  </h5>
+
                 </div>
                 <div class="modal-body">
                     <form id="bookingForm" action="{{ route('book_appointment') }}" method="POST">
                         @csrf
-                        <!-- Select Service -->
                         <div class="mb-3">
-                            <label for="service" class="form-label">Select Service</label>
+                            <label for="service" class="form-label">{{ __('pages.select_service') }}</label>
                             <select class="form-select" id="service" name="service">
-                                <option value="">Choose a service</option>
+                                <option value="">{{ __('pages.choose_service') }}</option>
                                 @foreach ($services as $service)
                                     <option value="{{ $service->id }}">{{ $service->name }}</option>
                                 @endforeach
                             </select>
                         </div>
 
-                        <!-- Select Doctor (dynamic) -->
                         <div class="mb-3">
-                            <label for="doctor" class="form-label">Select Doctor</label>
+                            <label for="doctor" class="form-label">{{ __('pages.select_doctor') }}</label>
                             <select class="form-select" id="doctor" name="doctor" disabled>
-                                <option value="">Choose a doctor</option>
+                                <option value="">{{ __('pages.choose_doctor') }}</option>
                             </select>
                         </div>
 
                         <!-- Select Appointment Time (dynamic) -->
                         <div class="mb-3">
-                            <label for="appointment" class="form-label">Select Date & Time</label>
+                            <label for="appointment" class="form-label">{{ __('pages.select_time_date') }}</label>
                             <select class="form-select" id="appointment" name="appointment" disabled>
-                                <option value="">Choose a time</option>
+                                <option value="">{{ __('pages.choose_time') }}</option>
                             </select>
                         </div>
 
                         <div class="mb-3">
-                            <label for="payment_method" class="form-label">Select Payment Methode</label>
+                            <label for="payment_method" class="form-label">{{ __('pages.select_method') }}</label>
                             <select class="form-select" id="payment_method" name="payment_method">
-                                <option value="">Choose a Methode</option>
-                                <option value="{{ PaymentMethodEnum::full }}">full</option>
-                                <option value="{{ PaymentMethodEnum::installment }}">installment</option>
+                                <option value="">{{ __('pages.choose_method') }}</option>
+                                <option value="{{ PaymentMethodEnum::full }}">{{ __('EnumFile.full') }}</option>
+                                <option value="{{ PaymentMethodEnum::installment }}">{{ __('EnumFile.installment') }}</option>
                             </select>
                         </div>
 
-                        <button type="submit" class="btn btn-success">Confirm Booking</button>
+                        <button type="submit" class="btn btn-success">{{ __('pages.confirm_booking') }}</button>
                     </form>
                 </div>
 
@@ -168,6 +160,11 @@
                 $('#bookingModal').modal('hide');
             @endif
 
+            const translations = {
+                choose_doctor: "{{ __('pages.choose_doctor') }}",
+                choose_time: "{{ __('pages.choose_time') }}"
+            };
+
             $('#service').change(function() {
                 let serviceId = $(this).val();
                 if (serviceId) {
@@ -178,10 +175,9 @@
                             $('#doctor').html(data).prop('disabled', false);
                         }
                     });
-                } else {
-                    $('#doctor').html('<option value="">Choose a doctor</option>').prop('disabled', true);
-                    $('#appointment').html('<option value="">Choose a time</option>').prop('disabled',
-                        true);
+                }  else {
+                    $('#doctor').html(`<option value="">${translations.choose_doctor}</option>`).prop('disabled', true);
+                    $('#appointment').html(`<option value="">${translations.choose_time}</option>`).prop('disabled', true);
                 }
             });
 
@@ -197,7 +193,7 @@
                         }
                     });
                 } else {
-                    $('#appointment').html('<option value="">Choose a time</option>').prop('disabled',
+                    $('#appointment').html('<option value="">{{ __('pages.choose_time') }}</option>').prop('disabled',
                         true);
                 }
             });

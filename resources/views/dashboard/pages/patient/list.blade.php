@@ -78,10 +78,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Patient</h3>
+                        <h3 class="page-title">{{__('pages.patient')}}</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Patients</li>
+                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">{{__('pages.dashboard')}}</a></li>
+                            <li class="breadcrumb-item active">{{__('pages.patients')}}</li>
                         </ul>
 
                     </div>
@@ -97,7 +97,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Patients List</h3>
+                                        <h3 class="page-title">{{__('pages.patients_list')}}</h3>
                                     </div>
 
                                 </div>
@@ -108,11 +108,11 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Mobile</th>
-                                            <th>Email</th>
-                                            <th>Account</th>
-                                            <th> status</th>
+                                            <th>{{__('pages.name')}}</th>
+                                            <th>{{__('pages.mobile')}}</th>
+                                            <th>{{__('pages.email')}}</th>
+                                            <th>{{__('pages.account')}}</th>
+                                            <th> {{__('pages.status')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

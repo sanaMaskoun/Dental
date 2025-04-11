@@ -9,8 +9,8 @@
                 <div class="row slider-text align-items-end">
                     <div class="col-md-7 col-sm-12 ftco-animate mb-5">
                         <p class="breadcrumbs" data-scrollax=" properties: { translateY: '70%', opacity: 1.6}"><span
-                                class="mr-2"><a href="{{ route('home') }}">Home</a></span></p>
-                        <h1 class="mb-3" data-scrollax=" properties: { translateY: '70%', opacity: .9}">Join Us</h1>
+                                class="mr-2"><a href="{{ route('home') }}">{{ __('pages.home') }}</a></span></p>
+                        <h1 class="mb-3" data-scrollax=" properties: { translateY: '70%', opacity: .9}">{{ __('pages.join_us') }}</h1>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row d-flex mb-5 contact-info">
                 <div class="col-md-12 mb-4">
-                    <h2 class="h4">Join Information</h2>
+                    <h2 class="h4">{{ __('pages.join_information') }}</h2>
                 </div>
 
             </div>
@@ -31,27 +31,27 @@
                     <form action="{{ route('join_store') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" name="name" placeholder="Your Name">
+                            <input type="text" class="form-control" name="name" placeholder="{{ __('pages.your_name') }}">
                             @error('name')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <input type="email" class="form-control" name="email" placeholder="Your Email">
+                            <input type="email" class="form-control" name="email" placeholder="{{ __('pages.your_email') }}">
                             @error('email')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" name="subject" placeholder="Subject">
+                            <input type="text" class="form-control" name="subject" placeholder="{{ __('pages.subject') }}">
                             @error('subject')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="phone" placeholder="Phone">
+                            <input type="text" class="form-control" name="phone" placeholder="{{ __('pages.mobile') }}">
                             @error('phone')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
@@ -60,7 +60,7 @@
 
 
                         <div class="form-group">
-                            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                            <input type="submit" value="{{ __('pages.send_msg') }}" class="btn btn-primary py-3 px-5">
                         </div>
 
                     </form>

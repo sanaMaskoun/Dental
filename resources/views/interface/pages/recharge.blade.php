@@ -84,7 +84,7 @@
                 <div class="row slider-text align-items-end">
                     <div class="col-md-7 col-sm-12 ftco-animate mb-5">
                         <p class="breadcrumbs" data-scrollax=" properties: { translateY: '70%', opacity: 1.6}"><span
-                                class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span> /Recharge</span></p>
+                                class="mr-2"><a href="{{ route('home') }}">{{ __('pages.home') }}</a></span> <span> /{{ __('pages.recharge') }}</span></p>
 
                     </div>
                 </div>
@@ -109,27 +109,27 @@
                 @endif
                     <div class="card">
                         <div class="card-header">
-                            <h4>Recharge </h4>
+                            <h4>{{ __('pages.recharge') }} </h4>
                         </div>
                         <div class="card-body">
                             <form  action="{{ route('recharge_store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="amount">Amount</label>
+                                    <label for="amount">{{ __('pages.amount') }}</label>
                                     <input type="number" class="form-control" id="amount" name="amount"
-                                        placeholder="Enter Amount">
+                                        placeholder="{{ __('pages.enter_amount') }}">
                                     @error('amount')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="link">Link</label>
+                                    <label for="link">{{ __('pages.link') }}</label>
                                     <input type="file" class="form-control-file" name="link" id="link">
                                     @error('link')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block">Confirm payment
+                                <button type="submit" class="btn btn-primary btn-block">{{ __('pages.confirm_payment') }}
                                 </button>
                             </form>
                         </div>

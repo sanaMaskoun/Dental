@@ -174,6 +174,146 @@ return [
      //Edit FAQ
      'edit_faq'   => 'Edit FAQ',
 
+     //join approve
+     'approve'   => 'Approve',
+
+
+     //patient list
+     'account'    => 'account',
+
+     //patient show
+     'diagnosis_history'  =>'Diagnosis History',
+     'due_date'           => 'Due Date',
+     'more'               =>'More',
+     'no_diagnoses_found.' =>'No diagnoses found.',
+
+     //payments list
+     'payments_list'     =>'Payments list',
+     'amount'     =>'amount',
+
+     //service create
+     'service_name'   =>'Service Name',
+     'enter_service_name'   =>'Enter Service Name',
+     'description'         =>'Description',
+     'enter_description'         =>'Enter Service Description',
+     'price'              =>'Price',
+     'enter_price'        => 'Enter Price',
+     'service_pictures'    =>'Service pictures',
+     'enter_service_pictures'    =>'Enter Service pictures',
+     'specialization_select'    =>'specialization select',
+
+
+     //service edit
+     'edit_service'        => 'Service Edit',
+
+
+     //specialization create
+     'specialization_name'   => 'Specialization Name',
+     'enter_specialization_name'   => 'Enter Specialization Name',
+     'enter_specialization_description'  => 'Enter Specialization Description',
+     'specialization_pictures'  => 'Specialization pictures',
+     'enter_specialization_pictures'  => 'Enter Specialization pictures',
+
+     //specialization Edit
+     'specializations_edit'     =>'Specializations Edit',
+
+
+     //interface nav
+     'about'        =>'about',
+     'login'    =>'Login',
+
+     //footer
+     'description_footer'   =>'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
+              blind texts.',
+      'quick_links'       =>'Quick Links',
+      'office'            =>'Office',
+      'location_footer'   =>'145 Ayazma Street, Besiktas Istanbul Turkey',
+
+
+
+    //about
+    'tab_1'        =>'What we do',
+    'tab_2'        =>'Our mission',
+    'tab_3'        =>'Our goal',
+
+    'title_tab_1'  => 'We Offer High Quality Services',
+
+    'description_1_tab'  => 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
+                      live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a
+                      large language ocean.',
+
+    'description_2_tab'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste
+                      dolores consequatur',
+
+'title_tab_2'    =>'To Accomodate All Patients',
+'title_tab_3'    =>'Help Our Customers Needs',
+
+
+'title_section_2' => 'Help Our Customers Needs',
+'description_section_2' => 'A small river named Duden flows by their place and supplies it with the necessary regelialia.',
+
+'title_2_section_2'     => 'Well Experience Dentist',
+'description_2_section_2'   => 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
+                  the blind texts.',
+
+'title_3_section_2'  => 'High Technology Facilities',
+'title_4_section_2'  => 'Comfortable Clinicswedd',
+
+//contact us
+'contact_info'      => 'Contact Information',
+'your_name'         => 'Your Name',
+'your_email'        => 'your email',
+'send_msg'          => 'Send Message',
+
+
+//doctors
+'title_doctors'   => 'Well Experienced  Doctors',
+'title_2_doctors'  =>'Meet Our Experience Dentist',
+'description_doctors' => 'A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences',
+
+//view doctor
+'details'   =>'Doctor Details',
+'available'  =>'Appointments Available',
+
+//FAQ
+'read_faq'   => 'Read Our FAQ',
+
+
+//home
+'title_1_home' => 'Modern Dentistry in a Calm and Relaxed Environment',
+'title_2_home' => 'Modern Achieve  Your Desired Perfect Smile',
+'book_appointment'   =>'Book an Appointment',
+'our_specialization'  =>'Our Specialization',
+'times'                =>'times',
+'choose_service'     =>'Choose a service',
+'choose_doctor'     =>'Choose a doctor',
+'select_service'    =>'Select Service',
+'select_doctor'    =>'Select Doctor',
+'select_time_date'         =>'Select Date & Time',
+'choose_method'     =>'Choose a Methode',
+'select_method'     =>'Select Payment Methode',
+'choose_time'      =>'Choose a time',
+'confirm_booking'   =>'Confirm Booking',
+
+
+//join us
+'join_information'  => 'Join Information',
+
+
+//Recharge
+'recharge'      =>'Recharge',
+'enter_amount'  =>'Enter Amount',
+'confirm_payment'   =>'Confirm payment',
+
+
+//service
+'title_1_service'   => 'Our Service Keeps  you Smile',
+
+//view service
+'Service_details'   => 'Service Details',
+
+//view service
+'specialization_details'   => 'Specialization  Details',
 
 
 

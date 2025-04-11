@@ -160,6 +160,158 @@ return [
 
 
 
+     //FAQ create
+     'faq_information'   => 'SSS Bilgileri',
+     'question'   => 'Soru',
+     'enter_question'   => 'Soruyu Girin',
+     'answer'   => 'Cevap',
+     'enter_answer'   => 'Yanıtı Girin',
+
+
+     //Edit FAQ
+     'edit_faq'   => 'SSS\'yi düzenle',
+
+     //join approve
+     'approve'   => 'Onaylamak',
+
+
+     //patient list
+     'account'    => 'hesap',
+
+     //patient show
+     'diagnosis_history'  =>'Tanı Geçmişi',
+     'due_date'           => 'Bitiş tarihi',
+     'more'               =>'Daha',
+     'no_diagnoses_found.' =>'Hiçbir teşhis bulunamadı.',
+
+     //payments list
+     'payments_list'     =>'Ödeme listesi',
+     'amount'     =>'miktar',
+
+     //service create
+     'service_name'   =>'Hizmet Adı',
+     'enter_service_name'   =>'Hizmet Adını Girin',
+     'description'         =>'Tanım',
+     'enter_description'         =>'Hizmet Açıklamasını Girin',
+     'price'              =>'Fiyat',
+     'enter_price'        => 'Fiyat Girin',
+     'service_pictures'    =>'Servis resimleri',
+     'enter_service_pictures'    =>'Servis resimlerini girin',
+     'specialization_select'    =>'uzmanlık seçimi',
+
+
+     //service edit
+     'edit_service'        => 'Hizmet Düzenle',
+
+
+     //specialization create
+     'specialization_name'   => 'Uzmanlık Adı',
+     'enter_specialization_name'   => 'Uzmanlık Adını Girin',
+     'enter_specialization_description'  => 'Uzmanlık Açıklamasını Girin',
+     'specialization_pictures'  => 'Uzmanlık resimleri',
+     'enter_specialization_pictures'  => 'Uzmanlık resimlerini girin',
+
+     //specialization Edit
+     'specializations_edit'     =>'Uzmanlıklar Düzenle',
+
+
+     //interface nav
+     'about'        =>'hakkında',
+     'login'    =>'Giriş yapmak',
+
+
+     //footer
+     'description_footer'   =>'Uzak, çok uzakta, kelime dağlarının ardında, Vokalia ve Consonantia ülkelerinden çok uzakta, kör metinler yaşar.',
+      'quick_links'       =>'Hızlı Bağlantılar',
+      'office'            =>'Ofis',
+      'location_footer'   =>'145 Ayazma Sokak, Beşiktaş İstanbul Turkey',
+
+
+
+
+    //about
+    'tab_1'        =>'ne yapıyoruz',
+    'tab_2'        =>'Misyonumuz',
+    'tab_3'        =>'Amacımız',
+
+    'title_tab_1'  => 'Yüksek Kaliteli Hizmetler Sunuyoruz',
+
+    'description_1_tab'  => 'Uzak uzakta, kelime dağlarının ardında, Vokalia ve Consonantia ülkelerinden uzakta,
+kör metinler yaşar. Ayrı ayrı Bookmarksgrove\'da, Semantics\'in kıyısında, büyük bir dil okyanusunda yaşarlar.',
+
+    'description_2_tab'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste
+                      dolores consequatur',
+
+'title_tab_2'    =>'Tüm Hastalara Yer Sağlamak',
+'title_tab_3'    =>'Müşterilerimizin İhtiyaçlarına Yardımcı Olun',
+
+
+'title_section_2' => 'Müşterilerimizin İhtiyaçlarına Yardımcı Olun',
+'description_section_2' => 'Bulundukları yerin yanından Duden adlı küçük bir nehir geçer ve bu nehir, gerekli olan regelialia\'yı sağlar.',
+
+'title_2_section_2'     => 'İyi Deneyimli Diş Hekimi',
+'description_2_section_2'   => 'Uzak, çok uzakta, kelime dağlarının ardında, Vokalia ve Consonantia ülkelerinden çok uzakta,
+kör metinler yaşar.',
+
+'title_3_section_2'  => 'Yüksek Teknoloji Tesisleri',
+'title_4_section_2'  => 'Rahat Kliniklerwedd',
+
+//contact us
+'contact_info'      => 'İletişim Bilgileri',
+'your_name'         => 'Adınız',
+'your_email'        => 'e-postanız',
+'send_msg'          => 'Mesaj Gönder',
+
+
+//doctors
+'title_doctors'   => 'Deneyimli Doktorlar',
+'title_2_doctors'  =>'Deneyimli Diş Hekimimizle Tanışın',
+'description_doctors' => 'Duden adlı küçük bir nehir onların yanından geçer ve gerekli regelialia\'yı sağlar. Cümlelerin kavrulmuş kısımlarının bulunduğu bir cennet ülkesidir.',
+
+//view doctor
+'details'   =>'Doktor Detayları',
+'available'  =>'Randevular Mevcut',
+
+//FAQ
+'read_faq'   => 'SSS bölümümüzü okuyun',
+
+
+//home
+'title_1_home' => 'Sakin ve Rahat Bir Ortamda Modern Diş Hekimliği',
+'title_2_home' => 'Modern İstediğiniz Mükemmel Gülümsemeye Kavuşun',
+'book_appointment'   =>'Randevu Alın',
+'our_specialization'  =>'Uzmanlığımız',
+'times'                =>'kez',
+'choose_service'     =>'Bir hizmet seçin',
+'choose_doctor'     =>'Bir doktor seçin',
+'select_service'    =>'Hizmet Seçin',
+'select_doctor'    =>'Doktor Seçin',
+'select_time_date'         =>'Tarih ve Saati Seçin',
+'choose_method'     =>'Bir Yöntem Seçin',
+'select_method'     =>'Ödeme Yöntemini Seçin',
+'choose_time'      =>'Bir zaman seçin',
+'confirm_booking'   =>'Rezervasyonu Onayla',
+
+
+//join us
+'join_information'  => 'Katıl Bilgisi',
+
+
+//Recharge
+'recharge'      =>'Yeniden şarj et',
+'enter_amount'  =>'Tutarı Girin',
+'confirm_payment'   =>'Ödemeyi onayla',
+
+
+//service
+'title_1_service'   => 'Hizmetimiz Sizi Gülümsetmeye Devam Ediyor',
+
+//view service
+'Service_details'   => 'Hizmet Detayları',
+
+//view service
+'specialization_details'   => 'Uzmanlık Detayları',
+
 
 
 

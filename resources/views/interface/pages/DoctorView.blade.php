@@ -90,8 +90,8 @@
             <div class="row slider-text align-items-end">
                 <div class="col-md-7 col-sm-12 ftco-animate mb-5">
                     <p class="breadcrumbs" data-scrollax=" properties: { translateY: '70%', opacity: 1.6}"><span
-                            class="mr-2"><a href="{{ route('home') }}">Home</a> / Doctor Details</span></p>
-                    <h1 class="mb-3" data-scrollax=" properties: { translateY: '70%', opacity: .9}">Doctor Details</h1>
+                            class="mr-2"><a href="{{ route('home') }}">{{ __('pages.home') }}</a> / {{ __('pages.details') }}</span></p>
+                    <h1 class="mb-3" data-scrollax=" properties: { translateY: '70%', opacity: .9}">{{ __('pages.details') }}</h1>
                 </div>
             </div>
         </div>
@@ -106,14 +106,14 @@
 
         <div class="doctor-details">
             <h2>{{ $doctor->first_name }} {{ $doctor->last_name }}</h2>
-            <p><strong>Email:</strong> {{ $doctor->email }}</p>
-            <p><strong>Phone:</strong> {{ $doctor->phone }}</p>
-            <p><strong>Land Line:</strong> {{ $doctor->doctor->land_line }}</p>
-            <p><strong>Years of Practice:</strong> {{ $doctor->doctor->years_of_practice }}</p>
-            <p><strong>Location:</strong> {{ $doctor->doctor->location }}</p>
+            <p><strong>{{ __('pages.email') }}:</strong> {{ $doctor->email }}</p>
+            <p><strong>{{ __('pages.mobile') }}:</strong> {{ $doctor->phone }}</p>
+            <p><strong>{{ __('pages.land_line') }}:</strong> {{ $doctor->doctor->land_line }}</p>
+            <p><strong>{{ __('pages.years_of_practic') }}:</strong> {{ $doctor->doctor->years_of_practice }}</p>
+            <p><strong>{{ __('pages.location') }}:</strong> {{ $doctor->doctor->location }}</p>
 
             <div class="services">
-                <h3>Services</h3>
+                <h3>{{ __('pages.services') }}</h3>
                 <ul class="services-list">
                     @foreach ($doctor->doctor->services as $service)
                         <li>{{ $service->name }}</li>
@@ -122,13 +122,13 @@
             </div>
 
             <div class="appointments">
-                <h3>Appointments Available</h3>
+                <h3>{{ __('pages.available') }}</h3>
                 <ul class="appointments-list">
                     @foreach ($doctor->doctor->appointments as $appointment)
                         <li>
-                            <strong>Date:</strong> {{ $appointment->date }}<br>
-                            <strong>Start Time:</strong> {{ $appointment->start_time }}<br>
-                            <strong>End Time:</strong> {{ $appointment->end_time }}
+                            <strong>{{ __('pages.date') }}:</strong> {{ $appointment->date }}<br>
+                            <strong>{{ __('pages.start_time') }}:</strong> {{ $appointment->start_time }}<br>
+                            <strong>{{ __('pages.end_time') }}:</strong> {{ $appointment->end_time }}
                         </li>
                     @endforeach
                 </ul>

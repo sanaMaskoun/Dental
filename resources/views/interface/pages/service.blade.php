@@ -9,10 +9,8 @@
                 <div class="row slider-text align-items-end">
                     <div class="col-md-7 col-sm-12 ftco-animate mb-5">
                         <p class="breadcrumbs" data-scrollax=" properties: { translateY: '70%', opacity: 1.6}"><span
-                                class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Services</span></p>
-                        <h1 class="mb-3" data-scrollax=" properties: { translateY: '70%', opacity: .9}">Our Service Keeps
-                            you Smile
-                        </h1>
+                                class="mr-2"><a href="{{ route('home') }}">{{ __('pages.home') }}</a></span> <span>{{ __('pages.services') }}</span></p>
+                        <h1 class="mb-3" data-scrollax=" properties: { translateY: '70%', opacity: .9}">{{ __('pages.title_1_service') }}</h1>
                     </div>
                 </div>
             </div>
@@ -23,8 +21,8 @@
         <div class="container">
             <div class="row justify-content-center mb-5 pb-5">
                 <div class="col-md-7 text-center heading-section ftco-animate">
-                    <h2 class="mb-2">Our Service Keeps you Smile</h2>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <h2 class="mb-2">{{ __('pages.title_1_service') }}</h2>
+                    <p>{{ __('pages.description_doctors') }}.</p>
                 </div>
             </div>
 
@@ -39,7 +37,7 @@
                                 </div>
                                 <div class="media-body p-2 mt-3">
                                     <h3 class="heading">{{ $service->name }}</h3>
-                                    <p>Price: {{ $service->price }}</p>
+                                    <p>{{ __('pages.price') }}: {{ $service->price }}</p>
                                 </div>
                             </a>
                         </div>

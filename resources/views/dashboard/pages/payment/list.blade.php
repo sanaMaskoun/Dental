@@ -19,17 +19,17 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Payments</h3>
+                        <h3 class="page-title">{{__('pages.payments')}}</h3>
                         @role('doctor')
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Payments</li>
+                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">{{__('pages.dashboard')}}</a></li>
+                            <li class="breadcrumb-item active">{{__('pages.payments')}}</li>
                         </ul>
                         @endrole
                         @role('admin')
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Payments</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">{{__('pages.dashboard')}}</a></li>
+                            <li class="breadcrumb-item active">{{__('pages.payments')}}</li>
                         </ul>
                         @endrole
                     </div>
@@ -45,7 +45,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Payments List</h3>
+                                        <h3 class="page-title">{{__('pages.payments_list')}}</h3>
                                     </div>
 
                                 </div>
@@ -56,10 +56,10 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
-                                            <th>Patient</th>
-                                            <th>Service</th>
+                                            <th>{{__('pages.patient')}}</th>
+                                            <th>{{__('pages.service')}}</th>
 
-                                            <th>amount</th>
+                                            <th>{{__('pages.amount')}}</th>
 
 
                                         </tr>

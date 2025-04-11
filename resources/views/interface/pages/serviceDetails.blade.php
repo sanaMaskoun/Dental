@@ -9,7 +9,7 @@
                 <div class="row slider-text align-items-end">
                     <div class="col-md-7 col-sm-12 ftco-animate mb-5">
                         <p class="breadcrumbs" data-scrollax=" properties: { translateY: '70%', opacity: 1.6}"><span
-                                class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Service Details</span>
+                                class="mr-2"><a href="{{ route('home') }}">{{ __('pages.home') }}</a></span> <span>{{ __('pages.Service_details') }}</span>
                         </p>
 
                     </div>
@@ -26,7 +26,7 @@
                     <span class="subheading">{{ $service->description }}</span>
                 </div>
             </div>
-            <p class="text text-center name" style="color: #203e50; font-size: 20px;">Doctors</p>
+            <p class="text text-center name" style="color: #203e50; font-size: 20px;">{{ __('pages.doctors') }}</p>
             <div class="row justify-content-center ftco-animate">
                 <div class="col-md-8">
                     <div class="carousel-testimony owl-carousel ftco-owl">

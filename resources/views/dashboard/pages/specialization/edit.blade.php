@@ -7,10 +7,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Edit Specialization </h3>
+                        <h3 class="page-title">{{ __('pages.specializations_edit') }} </h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Edit Specialization</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                            <li class="breadcrumb-item active">{{ __('pages.specializations_edit') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label> Specialization Name <span class="login-danger">*</span></label>
+                                            <label> {{ __('pages.specialization_name') }} <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="name"
                                                 value="{{ $specialization->name }}">
                                             @error('name')
@@ -40,7 +40,7 @@
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label> Description <span class="login-danger">*</span></label>
+                                            <label> {{ __('pages.description') }} <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="description"
                                                 value="{{ $specialization->description }}">
                                             @error('description')
@@ -51,7 +51,7 @@
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Specialization pictures <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.specialization_pictures') }} <span class="login-danger">*</span></label>
 
                                             @if ($specialization->getFirstMediaUrl('img'))
                                                 <div style="margin-bottom: 10px;">
@@ -70,7 +70,7 @@
 
                                     <div class="col-12">
                                         <div class="student-submit">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('pages.submit') }}</button>
                                         </div>
                                     </div>
                                 </div>

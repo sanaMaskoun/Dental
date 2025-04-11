@@ -13,8 +13,15 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'welcome_login' => 'Welcome to Dentist Clinic',
+    'need_account'  =>'Need an account',
+    'sign_up'      =>'Sign Up',
+    'sign_in'     =>'Sign In',
+
+    //sign up
+    'details_sign_up'   =>'Enter details to create your account',
+    'already_registered' =>'Already Registered',
+    'register' =>'Register'
+
 
 ];

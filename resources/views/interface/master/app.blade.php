@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('interface/css/jquery.timepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/icons/flags/flags.css') }}">
 
 
     <link rel="stylesheet" href="{{ asset('interface/css/flaticon.css') }}">

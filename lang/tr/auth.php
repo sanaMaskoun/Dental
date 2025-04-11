@@ -12,10 +12,15 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'welcome_login' => 'Diş Kliniğine Hoş Geldiniz',
+    'need_account'  =>'Bir hesaba ihtiyacınız var',
+    'sign_up'      =>'Üye olmak',
+    'sign_in'     =>'Oturum aç',
 
-    'failed' => 'بيانات الاعتماد هذه لا تتطابق مع سجلاتنا.',
-    'password' => 'كلمة المرور المقدمة غير صحيحة.',
-    'throttle' => 'عدد كبير جدًا من محاولات تسجيل الدخول. يرجى المحاولة مرة أخرى خلال :seconds
-    ثواني.',
+     //sign up
+     'details_sign_up'   =>'Hesabınızı oluşturmak için ayrıntıları girin',
+     'already_registered' =>'Zaten Kayıtlı',
+     'register' =>'Kayıt olmak'
+
 
 ];
