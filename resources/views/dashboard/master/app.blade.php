@@ -65,7 +65,7 @@
         @yield('content')
     </div>
 
-
+    
 
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 
@@ -86,11 +86,11 @@
 
     <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset(path: 'js/jquery-ui.min.js') }}"></script>
 
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/ar.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/ar.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.js"></script>
 
 
     <script src="{{ asset('js/script.js') }}"></script>

@@ -21,10 +21,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Credit </h3>
+                        <h3 class="page-title">{{ __('pages.credit') }} </h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Credit</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                            <li class="breadcrumb-item active">{{ __('pages.credit') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Credits List</h3>
+                                        <h3 class="page-title">{{ __('pages.credits_list') }}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -47,10 +47,10 @@
                                 <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
-                                            <th>User name </th>
-                                            <th>Balance</th>
-                                            <th> link</th>
-                                            <th>Actions</th>
+                                            <th>{{ __('pages.user_name') }} </th>
+                                            <th>{{ __('pages.balance') }} </th>
+                                            <th> {{ __('pages.link') }} </th>
+                                            <th>{{ __('pages.action') }} </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,11 +69,11 @@
                                                     <div style="display: flex;">
                                                         <form action="{{ route('accept_payment', $credit->id) }}" method="post">
                                                             @csrf
-                                                            <button type="submit" style="background-color: rgb(193, 244, 205);" class="btn btn-success">accepte</button>
+                                                            <button type="submit" style="background-color: rgb(193, 244, 205);" class="btn btn-success">{{ __('pages.accepte') }}</button>
                                                         </form>
                                                         <form style="margin-left: 10px;" action="{{ route('reject_payment', $credit->id) }}" method="post">
                                                             @csrf
-                                                            <button type="submit" style="background-color: rgb(241, 160, 160); border: 1px solid red;" class="btn btn-danger">reject</button>
+                                                            <button type="submit" style="background-color: rgb(241, 160, 160); border: 1px solid red;" class="btn btn-danger">{{ __('pages.reject') }}</button>
                                                         </form>
                                                     </div>
                                                 </td>

@@ -7,10 +7,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Add Doctors</h3>
+                        <h3 class="page-title">{{ __('pages.doctor_add') }}</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Doctors</a></li>
-                            <li class="breadcrumb-item active">Add Doctor</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                            <li class="breadcrumb-item active">{{ __('pages.doctor_add') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
-                                        <h5 class="form-title"><span>Basic Details</span></h5>
+                                        <h5 class="form-title"><span>{{ __('pages.basic_details') }}</span></h5>
                                     </div>
 
                                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -38,9 +38,9 @@
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>First Name <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.first_name') }} <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="first_name"
-                                                value="{{ old('first_name') }}" placeholder="Enter First Name">
+                                                value="{{ old('first_name') }}" placeholder="{{ __('pages.enter_first_name') }}">
                                             @error('first_name')
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
@@ -48,9 +48,9 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Last Name <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.last_name') }} <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="last_name"
-                                                value="{{ old('last_name') }}" placeholder="Enter Last Name">
+                                                value="{{ old('last_name') }}" placeholder="{{ __('pages.enter_last_name') }}">
                                             @error('last_name')
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
@@ -61,9 +61,9 @@
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Mobile <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.mobile') }} <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="phone"
-                                                value="{{ old(key: 'phone') }}" placeholder="Enter Phone">
+                                                value="{{ old(key: 'phone') }}" placeholder="{{ __('pages.enter_mobile') }}">
                                             @error('phone')
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
@@ -72,9 +72,9 @@
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Land Line <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.land_line') }} <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="land_line"
-                                                value="{{ old(key: 'land_line') }}" placeholder="Enter Land Line">
+                                                value="{{ old(key: 'land_line') }}" placeholder="{{ __('pages.enter_land_line') }}">
                                             @error('land_line')
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
@@ -83,9 +83,9 @@
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>bio <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.bio') }} <span class="login-danger">*</span></label>
                                             <input type="textarea" class="form-control" name="bio"
-                                                value="{{ old(key: 'bio') }}" placeholder="Enter bio">
+                                                value="{{ old(key: 'bio') }}" placeholder="{{ __('pages.enter_bio') }}">
                                             @error('bio')
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
@@ -93,10 +93,10 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Years Of Practic <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.years_of_practic') }} <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="years_of_practice"
                                                 value="{{ old(key: 'years_of_practice') }}"
-                                                placeholder="Enter years of practice">
+                                                placeholder="{{ __('pages.enter_years_of_practic') }}">
                                             @error('years_of_practice')
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
@@ -108,15 +108,15 @@
 
 
                                     <div class="col-12">
-                                        <h5 class="form-title"><span>Login Details</span></h5>
+                                        <h5 class="form-title"><span>{{ __('pages.login_details') }}</span></h5>
                                     </div>
 
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Email <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.email') }} <span class="login-danger">*</span></label>
                                             <input type="email" class="form-control" name="email"
-                                                value="{{ old(key: 'email') }}" placeholder="Enter Mail">
+                                                value="{{ old(key: 'email') }}" placeholder="{{ __('pages.enter_email') }}">
                                             @error('email')
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
@@ -125,9 +125,9 @@
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Password <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.password') }} <span class="login-danger">*</span></label>
                                             <input type="password" class="form-control" name="password"
-                                                placeholder="Enter Password">
+                                                placeholder="{{ __('pages.enter_password') }}">
                                             @error('password')
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
@@ -136,13 +136,13 @@
 
 
                                     <div class="col-12">
-                                        <h5 class="form-title"><span>Address</span></h5>
+                                        <h5 class="form-title"><span>{{ __('pages.address') }}</span></h5>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group local-forms">
-                                            <label>Address <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.address') }} <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="location"
-                                                value="{{ old(key: 'location') }}" placeholder="Enter address">
+                                                value="{{ old(key: 'location') }}" placeholder="{{ __('pages.enter_address') }}">
                                             @error('location')
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
@@ -151,7 +151,7 @@
 
                                     <div class="col-12">
                                         <div class="student-submit">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('pages.submit') }}</button>
                                         </div>
                                     </div>
                                 </div>

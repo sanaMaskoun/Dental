@@ -8,10 +8,10 @@
                 <div class="row align-items-center">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Edit Diagnose</h3>
+                            <h3 class="page-title">{{ __('pages.edit_diagnose') }}
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Edit Diagnose</li>
+                                <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                                <li class="breadcrumb-item active">{{ __('pages.edit_diagnose') }}
                             </ul>
                         </div>
                     </div>
@@ -26,11 +26,11 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
-                                        <h5 class="form-title student-info">Diagnose Information </h5>
+                                        <h5 class="form-title student-info">{{ __('pages.diagnose_information') }} </h5>
                                     </div>
                                     <div class="col-12 col-sm-12">
                                         <div class="form-group local-forms">
-                                            <label>Diagnose <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.diagnose') }} <span class="login-danger">*</span></label>
                                             <input class="form-control" name="diagnose" type="text" value="{{ $diagnose->diagnose }}" >
                                             @error('diagnose')
                                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -42,7 +42,7 @@
 
                                     <div class="col-12 col-sm-12">
                                         <div class="form-group local-forms">
-                                            <label>Notes </label>
+                                            <label>{{ __('pages.notes') }} </label>
                                             <input class="form-control" type="text" name="notes" value="{{ $diagnose->notes }}" >
                                             @error('notes')
                                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -53,11 +53,11 @@
 
                                     <div class="col-12 col-sm-12">
                                         <div class="form-group local-forms">
-                                            <label>Patient <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.patient') }} <span class="login-danger">*</span></label>
 
 
                                             <select class="form-control select" name="patient" required>
-                                                <option value="" disabled selected>Select Patient</option>
+                                                <option value="" disabled selected>{{ __('pages.select_patient') }}</option>
                                                 @foreach ($patients as $patient)
                                                     <option value="{{ $patient->id }}"
                                                         {{ old('patient') == $patient->id ? 'selected' : '' }}>
@@ -79,17 +79,17 @@
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group students-up-files">
-                                            <label>Upload Diagnose Photo (150px X 150px)</label>
+                                            <label>{{ __('pages.upload_diagnose_photo') }} (150px X 150px)</label>
                                             <div class="uplod">
                                                 <label class="file-upload image-upbtn mb-0">
-                                                    Choose File <input type="file" name="diagnosImg">
+                                                    {{ __('pages.choose_file') }} <input type="file" name="diagnosImg">
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="student-submit text-end">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('pages.submit') }}</button>
                                         </div>
                                     </div>
                                 </div>

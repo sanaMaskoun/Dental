@@ -23,10 +23,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Contact Us</h3>
+                        <h3 class="page-title">{{ __('pages.contact_us') }}</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Contact Us</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                            <li class="breadcrumb-item active">{{ __('pages.contact_us') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Contact Us List</h3>
+                                        <h3 class="page-title">{{ __('pages.contact_us_list') }}</h3>
                                     </div>
 
                                 </div>
@@ -52,11 +52,11 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th> Subject</th>
-                                            <th> User  </th>
-                                            <th> Date  </th>
+                                            <th>{{ __('pages.name') }}</th>
+                                            <th>{{ __('pages.email') }}</th>
+                                            <th> {{ __('pages.subject') }}  </th>
+                                            <th> {{ __('pages.user_name') }}</th>
+                                            <th>{{ __('pages.date') }}  </th>
                                         </tr>
                                     </thead>
                                     <tbody>

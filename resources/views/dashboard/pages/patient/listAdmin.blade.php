@@ -135,7 +135,8 @@
                                                 <td>{{ $patient->patient->account }}</td>
 
                                                 <td>
-                                                    <form method="POST" action="{{ route('toggleStatus', $patient->id) }}">
+                                                    <form method="POST"
+                                                        action="{{ route('toggleStatus', $patient->id) }}">
                                                         @csrf
                                                         <label class="switch">
                                                             <input type="checkbox" name="status"

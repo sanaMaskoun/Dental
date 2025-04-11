@@ -19,17 +19,17 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Bookings</h3>
+                        <h3 class="page-title">{{ __('pages.bookings') }}</h3>
                         @role('doctor')
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Payments</li>
+                                <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                                <li class="breadcrumb-item active">{{ __('pages.bookings') }}</li>
                             </ul>
                         @endrole
                         @role('admin')
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Payments</li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                                <li class="breadcrumb-item active">{{ __('pages.bookings') }}</li>
                             </ul>
                         @endrole
                     </div>
@@ -45,7 +45,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Bookings List</h3>
+                                        <h3 class="page-title">{{ __('pages.bookings_list') }}</h3>
                                     </div>
 
                                 </div>
@@ -56,19 +56,19 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
-                                            <th>Patient</th>
-                                            <th>Service</th>
+                                            <th>{{ __('pages.patient') }}</th>
+                                            <th>{{ __('pages.service') }}</th>
                                             @role('admin')
-                                                <th>Doctor</th>
+                                                <th>{{ __('pages.doctor') }}</th>
                                             @endrole
-                                            <th>Start Time</th>
-                                            <th>End Time</th>
-                                            <th>Payment Method</th>
-                                            <th>Status</th>
+                                            <th>{{ __('pages.start_time') }}</th>
+                                            <th>{{ __('pages.end_time') }}</th>
+                                            <th>{{ __('pages.payment_method') }}</th>
+                                            <th>{{ __('pages.status') }}</th>
 
 
                                             @role('doctor')
-                                                <th>Action</th>
+                                                <th>{{ __('pages.action') }}</th>
                                             @endrole
 
                                         </tr>
@@ -98,8 +98,8 @@
 
                                                 <td> {{ $booking->start_time }} </td>
                                                 <td> {{ $booking->end_time }} </td>
-                                                <td> {{ $booking->payment_method == 1 ? 'full' : 'installment' }} </td>
-                                                <td> {{ $booking->status == 1 ? 'complete' : 'pending' }} </td>
+                                                <td>{{ $booking->payment_method == 1 ? __('EnumFile.full') : __('EnumFile.installment') }}</td>
+                                                <td> {{ $booking->status == 1 ? __('EnumFile.complete') : __('EnumFile.pending') }} </td>
                                                 @role('doctor')
                                                     <td>
                                                         <form action="{{ route('completed_payment', $booking->id) }}"
@@ -111,7 +111,7 @@
                                                             color: white;
                                                             padding: 8px;
                                                         "
-                                                                class="btn btn-success">compeleted</button>
+                                                                class="btn btn-success">{{ __('pages.compeleted') }}</button>
                                                         </form>
 
                                                     </td>

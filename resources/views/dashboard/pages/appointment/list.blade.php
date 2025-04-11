@@ -19,10 +19,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Appointment </h3>
+                        <h3 class="page-title">{{ __('pages.appointments') }} </h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Appointment</li>
+                            <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                            <li class="breadcrumb-item active">{{ __('pages.appointments') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -46,18 +46,22 @@
     </div>
 @endsection
 <script>
+
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-            locale: 'en',
+            locale: '{{ app()->getLocale() }}',
             initialView: 'dayGridMonth',
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
                 right: ''
             },
+
             events: '/appointment/json',
             displayEventTime: true,
+
+
 
             eventContent: function(arg) {
                 let timeText = arg.event.start.toLocaleTimeString('en-GB', {
@@ -90,18 +94,18 @@
                 };
 
                 Swal.fire({
-                    title: 'Edit Appointment',
-                    html: `<label>Date:</label><br>
+                    title: '{{ __('pages.edit_appointment') }}',
+                    html: `<label>{{ __('pages.date') }}:</label><br>
                         <input type="date" id="newDate" class="swal2-input" value="${formatDate(startLocal)}"><br>
-                        <label>Start Time:</label><br>
+                        <label>{{ __('pages.start_time') }}:</label><br>
                         <input type="time" id="newStartTime" class="swal2-input" value="${formatTime(startLocal)}"><br>
-                        <label>End Time:</label><br>
+                        <label>{{ __('pages.end_time') }}:</label><br>
                         <input type="time" id="newEndTime" class="swal2-input" value="${formatTime(endLocal)}">`,
                     showCancelButton: true,
-                    confirmButtonText: 'Save',
-                    cancelButtonText: 'Cancel',
+                    confirmButtonText: '{{ __('pages.save') }}',
+                    cancelButtonText: '{{ __('pages.cancel') }}',
                     showDenyButton: true,
-                    denyButtonText: 'Delete',
+                    denyButtonText: '{{ __('pages.delete') }}',
                     preConfirm: () => {
                         return {
                             date: document.getElementById('newDate').value,
@@ -125,24 +129,24 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.status === "success") {
-                                    Swal.fire("Success",
-                                        "Appointment updated successfully!",
+                                    Swal.fire("{{ __('message.success') }}",
+                                        "{{ __('message.edit_appointment') }}",
                                         "success");
                                     calendar.refetchEvents();
                                 } else {
                                     Swal.fire("Error", data.message, "error");
                                 }
                             })
-                            .catch(error => Swal.fire("Error", "Something went wrong!",
+                            .catch(error => Swal.fire("{{ __('message.error') }}", "{{ __('message.error_edit_appointment') }}",
                                 "error"));
                     } else if (result.isDenied) {
                         Swal.fire({
-                            title: "Are you sure?",
-                            text: "This appointment will be deleted permanently.",
+                            title: "{{ __(key: 'pages.are_you_sure') }}",
+                            text: "{{ __(key: 'pages.text_add_appointment') }}",
                             icon: "warning",
                             showCancelButton: true,
-                            confirmButtonText: "Yes, delete it!",
-                            cancelButtonText: "Cancel"
+                            confirmButtonText: "{{ __(key: 'pages.delete_appointment') }}",
+                            cancelButtonText: "{{ __(key: 'pages.cancel') }}"
                         }).then((confirmResult) => {
                             if (confirmResult.isConfirmed) {
                                 fetch(`/appointment/delete/${appointmentId}`, {
@@ -158,22 +162,23 @@
                                     .then(response => response.json())
                                     .then(data => {
                                         if (data.status === "success") {
-                                            Swal.fire("Deleted!",
-                                                "Appointment has been deleted.",
+                                            Swal.fire("{{ __('pages.delete') }}",
+                                                "{{ __(key: 'message.delete_appointment') }}",
                                                 "success");
                                             calendar.refetchEvents();
                                         } else {
                                             Swal.fire("Error", data.message,
-                                                "error");
+                                                "{{ __(key: 'message.error') }}");
                                         }
                                     })
-                                    .catch(error => Swal.fire("Error",
-                                        "Something went wrong!", "error"));
+                                    .catch(error => Swal.fire("{{ __(key: 'message.error') }}",
+                                        "{{ __(key: 'message.error_edit_appointment') }}", "error"));
                             }
                         });
                     }
                 });
             }
+
         });
 
         calendar.render();

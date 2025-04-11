@@ -10,7 +10,7 @@
                         <div class="col-md-12">
 
                             <div class="student-profile-head">
-                              
+
 
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4">
@@ -50,14 +50,14 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="heading-detail">
-                                            <h4>Personal Details :</h4>
+                                            <h4>{{ __('pages.personal_details') }} :</h4>
                                         </div>
                                         <div class="personal-activity">
                                             <div class="personal-icons">
                                                 <i class="feather-user"></i>
                                             </div>
                                             <div class="views-personal">
-                                                <h4>Name </h4>
+                                                <h4>{{ __('pages.name') }} </h4>
                                                 <h5>{{ $doctor->first_name }} {{ $doctor->last_name }}</h5>
                                             </div>
                                         </div>
@@ -67,7 +67,7 @@
                                                 <i class="feather-phone-call"></i>
                                             </div>
                                             <div class="views-personal">
-                                                <h4>Mobile</h4>
+                                                <h4>{{ __('pages.mobile') }}</h4>
                                                 <h5>{{ $doctor->phone }}</h5>
                                             </div>
                                         </div>
@@ -77,7 +77,7 @@
                                                 <i class="feather-mail"></i>
                                             </div>
                                             <div class="views-personal">
-                                                <h4>Email</h4>
+                                                <h4>{{ __('pages.email') }}</h4>
                                                 <h5>{{ $doctor->email }}</a>
                                                 </h5>
                                             </div>
@@ -89,7 +89,7 @@
 
                                             </div>
                                             <div class="views-personal">
-                                                <h4>land line</h4>
+                                                <h4>{{ __('pages.land_line') }}</h4>
                                                 <h5>{{ $doctor->doctor?->land_line }}</h5>
                                             </div>
                                         </div>
@@ -99,7 +99,7 @@
                                                 <i class="fas fa-map-marker-alt"></i>
                                             </div>
                                             <div class="views-personal">
-                                                <h4>lcation</h4>
+                                                <h4>{{ __('pages.location') }}</h4>
                                                 <h5>{{ $doctor->doctor?->location }}</h5>
                                             </div>
                                         </div>
@@ -109,7 +109,7 @@
                                                 <i class="fas fa-user-md"></i>
                                             </div>
                                             <div class="views-personal">
-                                                <h4>years f practice</h4>
+                                                <h4>{{ __('pages.years_of_practic') }}</h4>
                                                 <h5>{{ $doctor->doctor?->years_of_practice }}</h5>
                                             </div>
                                         </div>
@@ -119,7 +119,7 @@
                                                 <i class="fas fa-calendar-alt"></i>
                                             </div>
                                             <div class="views-personal">
-                                                <h4>Joining Date</h4>
+                                                <h4>{{ __('pages.joining_date') }}</h4>
                                                 <h5>{{ $doctor->created_at->format('Y-m-d') }}</h5>
                                             </div>
                                         </div>
@@ -131,7 +131,7 @@
                                             </div>
                                             <div class="views-personal">
                                                 <h4>Status</h4>
-                                                <h5>{{ $doctor->is_active == 0 ? 'Inactive' : 'Active' }}</h5>
+                                                <h5>{{ $doctor->is_active == 0 ? __('pages.Inactive') : __('pages.active') }}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -145,10 +145,10 @@
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <div class="heading-detail">
-                                            <h4>About Me</h4>
+                                            <h4>{{ __('pages.about_me') }}</h4>
                                         </div>
                                         <div class="hello-park">
-                                            <h5>Hello I am Dr. {{ $doctor->first_name }} {{ $doctor->last_name }}</h5>
+                                            <h5>{{ __('pages.hello') }} {{ $doctor->first_name }} {{ $doctor->last_name }}</h5>
                                             <p>{{ $doctor->doctor?->bio }} </p>
                                         </div>
                                     </div>
@@ -158,7 +158,7 @@
                                     <div class="card mb-0">
                                         <div class="card-body">
                                             <div class="heading-detail">
-                                                <h4>Specializations:</h4>
+                                                <h4>{{ __('pages.specializations') }}:</h4>
                                             </div>
 
                                             <div class="skill-blk">

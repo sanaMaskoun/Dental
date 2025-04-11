@@ -7,10 +7,10 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Edit Appointment</h3>
+                    <h3 class="page-title">{{ __('pages.edit_appointment') }}</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Edit Appointment</li>
+                        <li class="breadcrumb-item"><a href="{{ route('doctor_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('pages.edit_appointment') }}</li>
                     </ul>
                 </div>
             </div>
@@ -24,11 +24,11 @@
                             @csrf
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="form-title"><span>Appointment Information</span></h5>
+                                    <h5 class="form-title"><span>{{ __('pages.appointment_information') }}</span></h5>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms  calendar-icon">
-                                        <label>Date <span class="login-danger">*</span></label>
+                                        <label>{{ __('pages.date') }} <span class="login-danger">*</span></label>
                                         <input type="text" name="date" class="form-control datetimepicker" value="{{ $appointment->date }}">
                                         @error('date')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Start Time <span class="login-danger">*</span></label>
+                                        <label>{{ __('pages.start_time') }}<span class="login-danger">*</span></label>
                                         <input type="time" name="start_time" class="form-control" value="{{ $appointment->start_time }}">
                                           @error('start_time')
                                             <small class="form-text text-danger">{{ $message }}</small>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>End Time <span class="login-danger">*</span></label>
+                                        <label>{{ __('pages.end_time') }} <span class="login-danger">*</span></label>
                                         <input class="form-control" name="end_time" type="time" value="{{ $appointment->end_time }}">
                                           @error('end_time')
                                             <small class="form-text text-danger">{{ $message }}</small>
@@ -56,7 +56,7 @@
 
                                 <div class="col-12">
                                     <div class="student-submit">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('pages.submit') }}</button>
                                     </div>
                                 </div>
                             </div>
