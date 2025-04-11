@@ -19,10 +19,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">FAQ</h3>
+                        <h3 class="page-title">{{ __('pages.faq') }}</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">FAQ</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                            <li class="breadcrumb-item active">{{ __('pages.faq') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">FAQ List</h3>
+                                        <h3 class="page-title">{{ __('pages.faq_list') }}</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         <a href="{{ route('faq_create') }}" class="btn btn-primary"><i
@@ -51,10 +51,10 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
-                                            <th>Question</th>
-                                            <th>Answer</th>
+                                            <th>{{ __('pages.question') }}</th>
+                                            <th>{{ __('pages.answer') }}</th>
 
-                                            <th>Action</th>
+                                            <th>{{ __('pages.action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

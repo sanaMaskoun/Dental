@@ -8,10 +8,10 @@
                 <div class="row align-items-center">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Edit FAQ</h3>
+                            <h3 class="page-title">{{ __('pages.edit_faq') }}</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Edit FAQ</li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">{{ __('pages.dashboard') }}</a></li>
+                                <li class="breadcrumb-item active">{{ __('pages.edit_faq') }}</li>
                             </ul>
                         </div>
                     </div>
@@ -26,11 +26,11 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
-                                        <h5 class="form-title student-info">FAQ Information </h5>
+                                        <h5 class="form-title student-info">{{ __('pages.faq_information') }}</h5>
                                     </div>
                                     <div class="col-12 col-sm-12">
                                         <div class="form-group local-forms">
-                                            <label>Question <span class="login-danger">*</span></label>
+                                            <label>{{ __('pages.question') }} <span class="login-danger">*</span></label>
                                             <input class="form-control" type="text" name="question" value="{{$faq->question }}" >
                                             @error('question')
                                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -42,7 +42,7 @@
 
                                     <div class="col-12 col-sm-12">
                                         <div class="form-group local-forms">
-                                            <label>Answer </label>
+                                            <label>{{ __('pages.answer') }} </label>
                                             <input class="form-control" name="answer" type="text" value="{{$faq->answer }}" >
                                             @error('answer')
                                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -57,7 +57,7 @@
 
                                     <div class="col-12">
                                         <div class="student-submit text-end">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('pages.submit') }}</button>
                                         </div>
                                     </div>
                                 </div>

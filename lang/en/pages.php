@@ -163,6 +163,18 @@ return [
 
 
 
+     //FAQ create
+     'faq_information'   => 'FAQ Information',
+     'question'   => 'Question',
+     'enter_question'   => 'Enter Question',
+     'answer'   => 'Answer',
+     'enter_answer'   => 'Enter Answer',
+
+
+     //Edit FAQ
+     'edit_faq'   => 'Edit FAQ',
+
+
 
 
 ];
