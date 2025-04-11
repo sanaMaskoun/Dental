@@ -27,7 +27,7 @@ class FAQController extends Controller
         FAQ::create($request->validated());
 
         return redirect()->route('faq_list')
-        ->with('success', 'Added successfully');
+        ->with('success', trans('message.add'));
 
     }
     public function edit(FAQ $faq)
@@ -42,7 +42,7 @@ class FAQController extends Controller
         $faq->update($request->validated());
 
         return redirect()->route('faq_list')
-        ->with('success', 'Modified successfully');
+        ->with('success', trans('message.update'));
 
     }
 
@@ -53,7 +53,7 @@ class FAQController extends Controller
         $faq->delete();
 
         return redirect()->route('faq_list')
-            ->with('success', 'delete successfully');
+            ->with('success', trans('message.delete'));
 
     }
 }

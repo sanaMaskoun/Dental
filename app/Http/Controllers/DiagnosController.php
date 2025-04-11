@@ -38,7 +38,7 @@ class DiagnosController extends Controller
             $diagnose->addMedia(request()->file('diagnosImg'))->toMediaCollection('diagnosImg');
         }
         return redirect()->route('diagnose_list')
-        ->with('success', 'Added successfully');
+        ->with('success', trans('message.add'));
 
     }
 
@@ -56,7 +56,7 @@ class DiagnosController extends Controller
         $diagnose->update($request->validated());
 
         return redirect()->route('diagnose_list')
-        ->with('success', 'Modified successfully');
+        ->with('success', trans('message.update'));
 
     }
 
@@ -67,7 +67,7 @@ class DiagnosController extends Controller
         $diagnose->delete();
 
         return redirect()->route('diagnose_list')
-            ->with('success', 'delete successfully');
+            ->with('success', trans('message.delete'));
 
     }
 }

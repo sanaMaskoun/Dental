@@ -36,8 +36,10 @@
             <div class="container">
                 <div class="row slider-text align-items-center" data-scrollax-parent="true">
                     <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ __('pages.title_1_home') }}</h1>
-                        <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ __('pages.description_doctors') }}</p>
+                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                            {{ __('pages.title_1_home') }}</h1>
+                        <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                            {{ __('pages.description_doctors') }}</p>
                         <button id="bookAppointmentBtn" class="btn btn-primary px-4 py-3" data-toggle="modal"
                             data-target="#bookingModal">
                             {{ __('pages.book_appointment') }}
@@ -52,7 +54,8 @@
             <div class="container">
                 <div class="row slider-text align-items-center" data-scrollax-parent="true">
                     <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ __('pages.title_2_home') }}</h1>
+                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                            {{ __('pages.title_2_home') }}</h1>
                         <p class="mb-4">{{ __('pages.description_doctors') }}</p>
 
                         <button id="bookAppointmentBtn" class="btn btn-primary px-4 py-3" data-toggle="modal"
@@ -69,7 +72,7 @@
         <div class="container">
             <div class="row justify-content-center mb-5 pb-5">
                 <div class="col-md-7 text-center heading-section ftco-animate">
-                    <h2 class="mb-2"> {{ __('pages.our_specialization') }}  </h2>
+                    <h2 class="mb-2"> {{ __('pages.our_specialization') }} </h2>
                 </div>
             </div>
 
@@ -102,7 +105,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="bookingModalLabel">{{ __('pages.book_appointment') }}  </h5>
+                    <h5 class="modal-title" id="bookingModalLabel">{{ __('pages.book_appointment') }} </h5>
 
                 </div>
                 <div class="modal-body">
@@ -138,7 +141,8 @@
                             <select class="form-select" id="payment_method" name="payment_method">
                                 <option value="">{{ __('pages.choose_method') }}</option>
                                 <option value="{{ PaymentMethodEnum::full }}">{{ __('EnumFile.full') }}</option>
-                                <option value="{{ PaymentMethodEnum::installment }}">{{ __('EnumFile.installment') }}</option>
+                                <option value="{{ PaymentMethodEnum::installment }}">{{ __('EnumFile.installment') }}
+                                </option>
                             </select>
                         </div>
 
@@ -160,10 +164,9 @@
                 $('#bookingModal').modal('hide');
             @endif
 
-            const translations = {
-                choose_doctor: "{{ __('pages.choose_doctor') }}",
-                choose_time: "{{ __('pages.choose_time') }}"
-            };
+            var choose_doctor = @json(__('pages.choose_doctor'));
+            var choose_time = @json(__('pages.choose_time'));
+
 
             $('#service').change(function() {
                 let serviceId = $(this).val();
@@ -175,9 +178,11 @@
                             $('#doctor').html(data).prop('disabled', false);
                         }
                     });
-                }  else {
-                    $('#doctor').html(`<option value="">${translations.choose_doctor}</option>`).prop('disabled', true);
-                    $('#appointment').html(`<option value="">${translations.choose_time}</option>`).prop('disabled', true);
+                } else {
+                    $('#doctor').html(`<option value="">${choose_doctor}</option>`)
+                        .prop('disabled', true);
+                    $('#appointment').html(`<option value="">${choose_time}</option>`)
+                        .prop('disabled', true);
                 }
             });
 
@@ -193,7 +198,8 @@
                         }
                     });
                 } else {
-                    $('#appointment').html('<option value="">{{ __('pages.choose_time') }}</option>').prop('disabled',
+                    $('#appointment').html('<option value="">{{ __('pages.choose_time') }}</option>').prop(
+                        'disabled',
                         true);
                 }
             });

@@ -84,7 +84,7 @@ class InterfaceController extends Controller
         $credit->addMedia(request()->file('link'))->toMediaCollection('link');
 
         return redirect()->back()
-            ->with('success', 'Recharge Successfully');
+            ->with('success', trans('message.recharge_successfully'));
 
     }
 
@@ -109,8 +109,8 @@ class InterfaceController extends Controller
             })
             ->get();
 
-        $options = '<option value="">Choose a doctor</option>';
-        foreach ($doctors as $doctor) {
+            $options = '<option value="">' . __('pages.choose_doctor') . '</option>';
+            foreach ($doctors as $doctor) {
             $options .= '<option value="' . $doctor->id . '">' . $doctor->first_name . ' ' . $doctor->last_name . '</option>';
         }
 
@@ -119,9 +119,7 @@ class InterfaceController extends Controller
 
     public function getAppointments(User $user)
     {
-        if (! $user->doctor) {
-            return '<option value="">No available slots</option>';
-        }
+
 
         $doctor = $user->doctor;
 
@@ -132,7 +130,7 @@ class InterfaceController extends Controller
             ->get();
 
         $slotDuration = 60;
-        $options      = '<option value="">Choose a time slot</option>';
+        $options = '<option value="">' . __('pages.choose_time') . '</option>';
 
         foreach ($appointments as $appointment) {
             $startTime = strtotime($appointment->start_time);
@@ -159,17 +157,14 @@ class InterfaceController extends Controller
         $service = Service::findOrFail($request->service);
         $patient = Auth()->user()->patient;
 
-        // البحث عن حجز موجود لنفس المريض والخدمة مع حالة pending
         $existing_booking = Booking::where('patient_id', $patient->id)
             ->where('service_id', $service->id)
             ->where('doctor_id', $doctor->id)
             ->where('status', StatusBookingEnum::pending)
             ->first();
 
-        // حالة الدفع الكامل
         if ($request->payment_method == PaymentMethodEnum::full) {
             if ($existing_booking) {
-                // إذا كان هناك حجز موجود ولم يكتمل بعد، لا نخصم أي مبلغ
                 Booking::create([
                     'doctor_id' => $doctor->id,
                     'patient_id' => $patient->id,
@@ -180,11 +175,10 @@ class InterfaceController extends Controller
                     'status' => StatusBookingEnum::pending,
                 ]);
 
-                return redirect()->back()->with('success', 'Booking created. No payment needed as full amount was already paid for this service.');
+                return redirect()->back()->with('success', trans('message.booking_create'));
             } else {
-                // إذا لم يكن هناك حجز موجود، نتحقق من الرصيد ونخصم المبلغ كاملاً
                 if ($patient->account < $service->price) {
-                    return redirect()->back()->with('error', "There is not enough balance to book the service.");
+                    return redirect()->back()->with('error', trans('message.no_enough_balance'));
                 }
 
                 $amount = $patient->account - $service->price;
@@ -201,9 +195,7 @@ class InterfaceController extends Controller
                 ]);
             }
         }
-        // حالة الدفع بالتقسيط
         elseif ($request->payment_method == PaymentMethodEnum::installment) {
-            // البحث عن جميع الحجوزات السابقة لنفس المريض والخدمة
             $previous_bookings = Booking::where('patient_id', $patient->id)
                 ->where('service_id', $service->id)
                 ->where('doctor_id', $doctor->id)
@@ -213,14 +205,12 @@ class InterfaceController extends Controller
 
             $total_paid = 0;
 
-            // حساب إجمالي المبالغ المدفوعة
             foreach ($previous_bookings as $booking) {
                 $total_paid += Payment::where('booking_id', $booking->id)->sum('amount');
             }
 
             $remaining = $service->price - $total_paid;
 
-            // إذا تم دفع المبلغ بالكامل
             if ($remaining <= 0) {
                 Booking::create([
                     'doctor_id' => $doctor->id,
@@ -232,21 +222,18 @@ class InterfaceController extends Controller
                     'status' => StatusBookingEnum::pending,
                 ]);
 
-                return redirect()->back()->with('success', 'Booking created. No payment needed as full amount was already paid.');
+                return redirect()->back()->with('success', trans('message.paid_all_balance'));
             }
 
-            // تحديد المبلغ المطلوب دفعه (النصف أو الباقي)
             $payment_amount = ($total_paid == 0) ? ($service->price / 2) : min($remaining, $service->price / 2);
 
             if ($patient->account < $payment_amount) {
-                return redirect()->back()->with('error', "There is not enough balance to book the service.");
+                return redirect()->back()->with('error', trans('message.no_enough_balance'));
             }
 
-            // خصم المبلغ
             $amount = $patient->account - $payment_amount;
             $patient->update(['account' => $amount]);
 
-            // إنشاء الحجز الجديد
             $new_booking = Booking::create([
                 'doctor_id' => $doctor->id,
                 'patient_id' => $patient->id,
@@ -257,7 +244,6 @@ class InterfaceController extends Controller
                 'status' => StatusBookingEnum::pending,
             ]);
 
-            // تسجيل الدفعة
             Payment::create([
                 'booking_id' => $new_booking->id,
                 'amount' => $payment_amount,
@@ -266,7 +252,7 @@ class InterfaceController extends Controller
 
         $this->updateDoctorAvailability($doctor, $request->appointment, Carbon::parse($request->appointment)->addHours(1));
 
-        return redirect()->back()->with('success', 'Booking completed successfully.');
+        return redirect()->back()->with('success', trans('message.booking_successfully'));
     }
     public function updateDoctorAvailability($doctor, $startTime, $endTime)
     {

@@ -19,7 +19,7 @@ class CreditController extends Controller
             $credit->patient->update(['account' => $credit->amount + $credit->patient->account]);
             $credit->delete();
 
-            return redirect()->back()->with('success', 'The balance has been added successfully');
+            return redirect()->back()->with('success', trans('message.add_balance'));
 
     }
 
@@ -27,7 +27,7 @@ class CreditController extends Controller
     {
 
             $credit->delete();
-            return redirect()->back()->with('success', 'Balance declined');
-        
+            return redirect()->back()->with('success', trans('message.reject_balance'));
+
     }
 }

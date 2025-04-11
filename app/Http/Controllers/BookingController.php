@@ -25,6 +25,6 @@ class BookingController extends Controller
     public function completed(Booking $booking)
     {
         $booking->update(['status' => StatusBookingEnum::complete]);
-        return redirect()->back()->with('success', 'completed successfully');
+        return redirect()->back()->with('success', trans('message.completed_successfully'));
     }
 }

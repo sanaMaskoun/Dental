@@ -25,7 +25,7 @@ class SpecializationController extends Controller
         $specialization->addMedia(request()->file('img'))->toMediaCollection('img');
 
         return redirect()->route('specialization_list')
-            ->with('success', 'Added successfully');
+            ->with('success', trans('message.add'));
 
     }
 
@@ -47,7 +47,7 @@ class SpecializationController extends Controller
             $specialization->addMedia(request()->file('img'))->toMediaCollection('img');
         }
         return redirect()->route('specialization_list')
-            ->with('success', 'Modified successfully');
+            ->with('success', trans('message.update'));
 
     }
     public function destroy(Specialization $specialization)
@@ -56,7 +56,7 @@ class SpecializationController extends Controller
         $specialization->delete();
 
         return redirect()->route('specialization_list')
-            ->with('success', 'delete successfully');
+            ->with('success', trans('message.delete'));
 
     }
 }

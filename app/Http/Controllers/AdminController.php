@@ -74,7 +74,7 @@ class AdminController extends Controller
         $user->is_active = ! $user->is_active;
         $user->save();
 
-        return redirect()->back()->with('success', 'Status updated successfully.');
+        return redirect()->back()->with('success', trans('messages.status_updated'));
 
     }
 }

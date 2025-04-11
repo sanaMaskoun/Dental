@@ -48,12 +48,12 @@ class AppointmentController extends Controller
 
         if ($conflict) {
             return redirect()->route('appointment_list')
-                ->with('error', 'There is a scheduling conflict. Please select last.');
+                ->with('error', trans('message.conflict_appointment'));
         } else {
             Appointment::create($request->validated());
 
             return redirect()->route('appointment_list')
-                ->with('success', 'Added successfully');
+                ->with('success', trans('message.add'));
         }
     }
 
@@ -77,7 +77,7 @@ class AppointmentController extends Controller
         if ($conflict) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'There is a scheduling conflict. Please select another time.'
+                'message' => trans('message.conflict_appointment')
             ], 422);
         }
 
@@ -89,7 +89,7 @@ class AppointmentController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Event updated successfully',
+            'message' => trans('message.event_updated'),
             'appointment' => $appointment
         ]);
     }
@@ -103,7 +103,7 @@ class AppointmentController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Appointment deleted successfully.'
+            'message' => trans('message.appointment_delete')
         ]);
     }
 

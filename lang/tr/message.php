@@ -9,6 +9,11 @@ return [
      'error'                           => 'hata',
      'success'                         => 'başarı',
 
+     'status_updated'           => 'Durum başarıyla güncellendi.',
+     'conflict_appointment'     =>'Bir zamanlama çakışması var. Lütfen sonuncuyu seçin.',
+     'add'       =>'Added successfully',
+
+
 
 
 

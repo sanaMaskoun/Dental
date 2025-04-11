@@ -63,7 +63,7 @@ class DoctorController extends Controller
         return $booking->service->price;
     });
 
-    $doctor_earnings = $total_revenue * 0.95; 
+    $doctor_earnings = $total_revenue * 0.95;
 
 
         return view('dashboard.pages.doctor.dashboard', compact(
@@ -97,7 +97,7 @@ class DoctorController extends Controller
         $user->assignRole('doctor');
 
         return redirect()->route('doctor_list')
-            ->with('success', 'Added successfully');
+            ->with('success', trans('message.add'));
 
     }
 
@@ -109,7 +109,7 @@ class DoctorController extends Controller
     public function edit(User $doctor)
     {
         if ($doctor->is_active == 0) {
-            return redirect()->route('doctor_list')->with('error', 'The account you want to modify is inactive');
+            return redirect()->route('doctor_list')->with('error', trans('message.inactive_account'));
         } else {
             return view('dashboard.pages.doctor.edit', compact('doctor'));
         }
@@ -129,7 +129,7 @@ class DoctorController extends Controller
             $doctor->addMedia($request->file('profile'))->toMediaCollection('profile');
         }
 
-        return redirect()->route('doctor_list')->with('success', 'Modified successfully');
+        return redirect()->route('doctor_list')->with('success', trans('message.update'));
     }
 
     public function editProfile(User $doctor)
@@ -159,7 +159,7 @@ class DoctorController extends Controller
         }
 
         return redirect()->route('doctor_details', Auth()->user()->id)
-            ->with('success', 'Modified successfully');
+            ->with('success', trans('message.update'));
 
     }
 

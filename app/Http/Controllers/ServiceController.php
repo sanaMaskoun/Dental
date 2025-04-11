@@ -28,7 +28,7 @@ class ServiceController extends Controller
         $service->addMedia(request()->file('img'))->toMediaCollection('img');
 
         return redirect()->route('services_list')
-            ->with('success', 'Added successfully');
+            ->with('success', trans('message.add'));
 
     }
 
@@ -52,7 +52,7 @@ class ServiceController extends Controller
             $service->addMedia(request()->file('img'))->toMediaCollection('img');
         }
         return redirect()->route('services_list')
-            ->with('success', 'Modified successfully');
+            ->with('success', trans('message.update'));
 
     }
     public function destroy(Service $service)
@@ -61,7 +61,7 @@ class ServiceController extends Controller
         $service->delete();
 
         return redirect()->route('services_list')
-            ->with('success', 'delete successfully');
+            ->with('success', trans('message.delete'));
 
     }
 }

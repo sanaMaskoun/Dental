@@ -32,7 +32,7 @@ class JoinUsController extends Controller
         $join->status      = StatusJoinUsEnum::approve;
         $join->save();
 
-        return redirect()->back()->with('success', 'Join completed successfully');
+        return redirect()->back()->with('success', trans('message.join_successfully'));
 
     }
     public function reject(JoinUs $join)
@@ -41,7 +41,7 @@ class JoinUsController extends Controller
         $join->user_id     = Auth()->user()->id;
         $join->status      = StatusJoinUsEnum::reject;
         $join->save();
-        return redirect()->back()->with('error', 'Join declined.');
+        return redirect()->back()->with('error', trans('message.join_reject'));
 
     }
 }
