@@ -126,7 +126,7 @@
 
                                         @isset($patient->patient->diagnoses)
                                             <div class="row flex-nowrap overflow-auto" style="gap: 15px;">
-                                                @forelse ($patient->patient->diagnoses as $diagnosis)
+                                                @forelse ($diagnoses as $diagnosis)
                                                     <div class="col-sm-6 col-lg-4 col-xl-3 d-flex">
                                                         <div class="card invoices-grid-card w-100">
                                                             <div class="card-middle">

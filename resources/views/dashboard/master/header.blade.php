@@ -1,13 +1,28 @@
 <div class="header">
 
     <div class="header-left">
-        <a href="{{ route('home') }}" class="logo">
+        @role('admin')
+        <a href="{{ route('admin_dashboard') }}" class="logo">
             <img src="{{ asset('img/logo.png') }}" alt="Logo">
         </a>
+        @endrole
+        @role('doctor')
+        <a href="{{ route('doctor_dashboard') }}" class="logo">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo">
+        </a>
+        @endrole
 
-        <a href="" class="logo logo-small">
+        @role('admin')
+        <a href="{{ route('admin_dashboard') }}" class="logo logo-small">
             <img src="{{ asset('img/logo.png') }}" width="30" height="30">
         </a>
+        @endrole
+        @role('doctor')
+        <a href="{{ route('doctor_dashboard') }}" class="logo logo-small">
+            <img src="{{ asset('img/logo.png') }}" width="30" height="30">
+        </a>
+        @endrole
+
     </div>
 
     <div class="menu-toggle">

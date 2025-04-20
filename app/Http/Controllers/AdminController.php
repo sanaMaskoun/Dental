@@ -22,7 +22,7 @@ class AdminController extends Controller
         });
 
         $doctorsData = User::where('type', UserTypeEnum::doctor)
-            ->where('is_active', true)
+            ->where('is_active', operator: true)
             ->where('created_at', '>=', now()->subMonths(12))
             ->selectRaw('MONTH(created_at) as month, COUNT(*) as count')
             ->groupBy('month')
@@ -74,7 +74,7 @@ class AdminController extends Controller
         $user->is_active = ! $user->is_active;
         $user->save();
 
-        return redirect()->back()->with('success', trans('messages.status_updated'));
+        return redirect()->back()->with('success', trans('message.status_updated'));
 
     }
 }

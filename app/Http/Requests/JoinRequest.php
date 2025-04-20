@@ -18,7 +18,7 @@ class JoinRequest extends FormRequest
     {
         return [
             'name'       => ['required', 'string', 'max:20'],
-            'email'      => ['required', 'email' ,'unique:contact_us,email'],
+            'email'      => ['required', 'email' ,'unique:join_us,email'],
             'subject'    => ['required', 'string', 'max:50'],
             'phone'      => ['required', 'numeric', 'digits_between:7,14'],
 

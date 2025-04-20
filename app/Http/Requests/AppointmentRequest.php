@@ -26,7 +26,7 @@ class AppointmentRequest extends FormRequest
 
     public function validated($key = null, $default = null)
     {
-        $date = Carbon::createFromFormat('d-m-Y', $this->date)->format('Y-m-d');
+        $date = Carbon::createFromFormat('d-m-Y', time: $this->date)->format('Y-m-d');
 
         return [
             'date'           => $date,

@@ -9,7 +9,7 @@
                 <li class="nav-item"><a href="{{ route('service') }}" class="nav-link">{{ __('pages.services') }}</a></li>
                 <li class="nav-item"><a href="{{ route('doctor') }}" class="nav-link">{{ __('pages.doctors') }}</a></li>
                 <li class="nav-item"><a href="{{ route('faq') }}" class="nav-link">{{ __('pages.faq') }}</a></li>
-                <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">{{ __('pages.contact_us') }}s</a></li>
+                <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">{{ __('pages.contact_us') }}</a></li>
                 <li class="nav-item"><a href="{{ route('join') }}" class="nav-link">{{ __('pages.join_us') }}</a></li>
                 {{--  <li class="nav-item"><a href="{{ route('login') }}" class="nav-link"><i class="fas fa-user"></i></a></li>  --}}
 
@@ -57,8 +57,9 @@
                 @if (Auth::check())
                     <li class="nav-item">
                         <a href="{{ route('recharge') }}" class="nav-link">
-                            <i class="fa fa-wallet"></i> @role('patient')
-                                <span>{{ Auth()->user()->patient->account }}</span>
+                            <i class="fa fa-wallet"></i>
+                           @role('patient')
+                                <span>{{ Auth()->user()->patient?->account }}</span>
                             @endrole
                         </a>
 

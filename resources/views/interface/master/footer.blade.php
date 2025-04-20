@@ -18,8 +18,9 @@
           <div class="ftco-footer-widget mb-4 ml-md-5">
             <h2 class="ftco-heading-2">{{ __('pages.quick_links') }}</h2>
             <ul class="list-unstyled">
-              <li><a href="{{ route('about') }}" class="py-2 d-block">{{ __('pages.home') }}</a></li>
-              <li><a href="{{ route('service') }}" class="py-2 d-block">{{ __('pages.about') }}</a></li>
+              <li><a href="{{ route('home') }}" class="py-2 d-block">{{ __('pages.home') }}</a></li>
+              <li><a href="{{ route('about') }}" class="py-2 d-block">{{ __('pages.about') }}</a></li>
+              <li><a href="{{ route('service') }}" class="py-2 d-block">{{ __('pages.service') }}</a></li>
               <li><a href="{{ route('doctor') }}" class="py-2 d-block">{{ __('pages.doctors') }}</a></li>
               <li><a href="{{ route('faq') }}" class="py-2 d-block">{{ __('pages.faq') }}</a></li>
               <li><a href="{{ route('contact') }}" class="py-2 d-block">{{ __('pages.contact_us') }}</a></li>

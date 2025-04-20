@@ -69,7 +69,8 @@
 
                                                 <td>{{ $join->name }}</td>
                                                 <td><strong>{{ $join->email }}</strong></td>
-                                                  <td><strong>{{ $join->subject }}</strong></td>
+                                                <td><strong> {{ Str::limit( $join->subject , 50) }}
+
                                                   <td><strong>{{ $join->phone }}</strong></td>
                                                   <td><strong>{{ $join->created_at->format('Y-m-d') }}</strong></td>
 

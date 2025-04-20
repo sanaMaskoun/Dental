@@ -45,8 +45,9 @@ class DiagnosController extends Controller
     public function edit(Diagnos $diagnose)
     {
         $patients = Patient::all();
+        $selected_patient= $diagnose->patient->id;
 
-        return view('dashboard.pages.diagnos.edit',compact('diagnose','patients'));
+        return view('dashboard.pages.diagnos.edit',compact('diagnose','patients','selected_patient'));
     }
 
 
@@ -54,7 +55,9 @@ class DiagnosController extends Controller
     {
 
         $diagnose->update($request->validated());
-
+        if (! is_null(request()->file('diagnosImg'))) {
+            $diagnose->addMedia(request()->file('diagnosImg'))->toMediaCollection('diagnosImg');
+        }
         return redirect()->route('diagnose_list')
         ->with('success', trans('message.update'));
 

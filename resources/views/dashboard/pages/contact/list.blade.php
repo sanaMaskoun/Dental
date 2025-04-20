@@ -67,7 +67,8 @@
 
                                                 <td>{{ $contact->name }}</td>
                                                 <td><strong>{{ $contact->email }}</strong></td>
-                                                  <td><strong>{{ $contact->subject }}</strong></td>
+
+                                                  <td><strong>{{ $contact->subject }}
                                                   <td><strong>{{ $contact->user->first_name }} {{ $contact->user->last_name }}</strong></td>
                                                   <td><strong>{{ $contact->created_at->format('Y-m-d') }}</strong></td>
 

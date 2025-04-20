@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Enums\PaymentMethodEnum;
 use App\Enums\StatusBookingEnum;
 use App\Enums\UserTypeEnum;
 use App\Models\Booking;
-use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
@@ -21,10 +18,13 @@ class BookingController extends Controller
         return view('dashboard.pages.booking.list', compact('bookings'));
     }
 
-
     public function completed(Booking $booking)
     {
-        $booking->update(['status' => StatusBookingEnum::complete]);
+        Booking::where('patient_id', $booking->patient_id)
+            ->where('service_id', $booking->service_id)
+            ->where('doctor_id', $booking->doctor_id)
+            ->where('status', StatusBookingEnum::pending)
+            ->update(['status' => StatusBookingEnum::complete]);
         return redirect()->back()->with('success', trans('message.completed_successfully'));
     }
 }

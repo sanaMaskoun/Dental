@@ -60,9 +60,8 @@
                                                 <option value="" disabled selected>{{ __('pages.select_patient') }}</option>
                                                 @foreach ($patients as $patient)
                                                     <option value="{{ $patient->id }}"
-                                                        {{ old('patient') == $patient->id ? 'selected' : '' }}>
+                                                        {{ old('patient', $selected_patient ?? '') == $patient->id ? 'selected' : '' }}>
                                                         {{ $patient->user->first_name }} {{ $patient->user->last_name }}
-
                                                     </option>
                                                 @endforeach
                                             </select>

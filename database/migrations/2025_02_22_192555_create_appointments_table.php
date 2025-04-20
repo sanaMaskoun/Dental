@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('date');
             $table->time('start_time');
             $table->time('end_time');
-            $table->boolean(column: 'is_available ')->default(true);
+            $table->boolean('is_available')->default(true);
 
             $table->foreignIdFor(model: Doctor::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
 

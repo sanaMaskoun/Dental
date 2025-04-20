@@ -128,7 +128,6 @@ class InterfaceController extends Controller
             ->orderBy('date', 'asc')
             ->orderBy('start_time', 'asc')
             ->get();
-
         $slotDuration = 60;
         $options = '<option value="">' . __('pages.choose_time') . '</option>';
 
@@ -157,13 +156,17 @@ class InterfaceController extends Controller
         $service = Service::findOrFail($request->service);
         $patient = Auth()->user()->patient;
 
-        $existing_booking = Booking::where('patient_id', $patient->id)
-            ->where('service_id', $service->id)
-            ->where('doctor_id', $doctor->id)
-            ->where('status', StatusBookingEnum::pending)
-            ->first();
 
         if ($request->payment_method == PaymentMethodEnum::full) {
+
+            $existing_booking = Booking::where('patient_id', $patient->id)
+            ->where('service_id', $service->id)
+            ->where('doctor_id', $doctor->id)
+            ->where('payment_method','<>', PaymentMethodEnum::installment)
+
+            ->where('status', operator: StatusBookingEnum::pending)
+            ->first();
+
             if ($existing_booking) {
                 Booking::create([
                     'doctor_id' => $doctor->id,
@@ -174,6 +177,7 @@ class InterfaceController extends Controller
                     'payment_method' => $request->payment_method,
                     'status' => StatusBookingEnum::pending,
                 ]);
+                $this->updateDoctorAvailability($doctor, $request->appointment, Carbon::parse($request->appointment)->addHours(1));
 
                 return redirect()->back()->with('success', trans('message.booking_create'));
             } else {
@@ -221,6 +225,7 @@ class InterfaceController extends Controller
                     'payment_method' => $request->payment_method,
                     'status' => StatusBookingEnum::pending,
                 ]);
+                $this->updateDoctorAvailability($doctor, $request->appointment, Carbon::parse($request->appointment)->addHours(1));
 
                 return redirect()->back()->with('success', trans('message.paid_all_balance'));
             }
@@ -256,7 +261,6 @@ class InterfaceController extends Controller
     }
     public function updateDoctorAvailability($doctor, $startTime, $endTime)
     {
-
         $startTime = Carbon::parse($startTime);
         $endTime   = Carbon::parse($endTime);
 
@@ -279,11 +283,11 @@ class InterfaceController extends Controller
                 'is_available' => true,
             ]);
         }
-        if ($appointment->end_time > $endTime) {
+        if ($appointment->end_time > $endTime->format('H:i:s')) {
             Appointment::create([
                 'doctor_id'    => $doctor->id,
                 'date'         => $appointment->date,
-                'start_time'   => $endTime,
+                'start_time'   => $endTime->format('H:i:s'),
                 'end_time'     => $appointment->end_time,
                 'is_available' => true,
             ]);
@@ -293,7 +297,7 @@ class InterfaceController extends Controller
             'doctor_id'    => $doctor->id,
             'date'         => $appointment->date,
             'start_time'   => $startTime,
-            'end_time'     => $endTime,
+            'end_time'     => $endTime->format('H:i:s'),
             'is_available' => false,
         ]);
 

@@ -16,16 +16,28 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = User::create([
-            'first_name' => 'ali',
-            'last_name' => 'ahmad',
-            'email' => 'ali@admin1.com',
+        $admin1 = User::create([
+            'first_name' => 'sara',
+            'last_name' => 'admin',
+            'email' => 'sara@admin1.com',
             'password' => Hash::make('123456789'),
             'phone' => '00971789456',
             'type' => UserTypeEnum::admin,
             'is_active' => 1,
         ]);
 
-        $admin->assignRole('admin');
+        $admin1->assignRole('admin');
+
+        $admin2 = User::create([
+            'first_name' => 'tasnim',
+            'last_name' => 'admin',
+            'email' => 'tasnim@admin2.com',
+            'password' => Hash::make('123456789'),
+            'phone' => '00971789456',
+            'type' => UserTypeEnum::admin,
+            'is_active' => 1,
+        ]);
+
+        $admin2->assignRole('admin');
     }
 }

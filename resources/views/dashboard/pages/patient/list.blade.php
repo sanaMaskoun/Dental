@@ -112,7 +112,6 @@
                                             <th>{{__('pages.mobile')}}</th>
                                             <th>{{__('pages.email')}}</th>
                                             <th>{{__('pages.account')}}</th>
-                                            <th> {{__('pages.status')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -134,17 +133,7 @@
                                                 <td>{{ $patient->user->email }}</td>
                                                 <td>{{ $patient->account }}</td>
 
-                                                <td>
-                                                    <form method="POST" action="{{ route('toggleStatus', $patient->user->id) }}">
-                                                        @csrf
-                                                        <label class="switch">
-                                                            <input type="checkbox" name="status"
-                                                                onchange="this.form.submit()"
-                                                                {{ $patient->user->is_active ? 'checked' : '' }}>
-                                                            <span class="slider round"></span>
-                                                        </label>
-                                                    </form>
-                                                </td>
+                                              
 
 
                                             </tr>

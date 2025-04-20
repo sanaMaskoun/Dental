@@ -131,21 +131,6 @@ Route::group(['prefix' => 'FAQ', 'middleware' => 'auth'], function () {
 
 });
 
-Route::group(['prefix' => 'FAQ', 'middleware' => 'auth'], function () {
-
-    Route::get('/list', [FAQController::class, 'index'])->name('faq_list');
-
-    Route::get('/add', [FAQController::class, 'create'])->name('faq_create');
-    Route::post('/store', [FAQController::class, 'store'])->name('faq_store');
-
-    Route::get('/show/{faq}', [FAQController::class, 'show'])->name('faq_details');
-
-    Route::get('/edit/{faq}', [FAQController::class, 'edit'])->name('faq_edit');
-    Route::post('/update/{faq}', [FAQController::class, 'update'])->name('faq_update');
-
-    Route::get('/delete/{faq}', [FAQController::class, 'destroy'])->name('faq_delete');
-
-});
 
 Route::group(['prefix' => 'contact-us', 'middleware' => 'auth'], function () {
 
@@ -202,8 +187,6 @@ Route::post('recharge-store', [InterfaceController::class, 'rechargeStore'])->na
 Route::get('/get-doctors/{serviceId}', [InterfaceController::class, 'getDoctors']);
 Route::get('/get-appointments/{user}', [InterfaceController::class, 'getAppointments']);
 Route::post('/book-appointment', [InterfaceController::class, 'bookAppointment'])->middleware(middleware: 'auth')->name('book_appointment');
-
-
 
 Route::get('/change-language/{lang}', [LanguageController::class, 'change'])
     ->name('language_change');
