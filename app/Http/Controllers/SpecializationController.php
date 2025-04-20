@@ -20,8 +20,11 @@ class SpecializationController extends Controller
     }
     public function store(SpecializationRequest $request)
     {
-
+        if (!$request->hasFile('img') ) {
+            return back()->withErrors(['img' => 'The field is required.']);
+        }
        $specialization = Specialization::create($request->validated());
+
         $specialization->addMedia(request()->file('img'))->toMediaCollection('img');
 
         return redirect()->route('specialization_list')

@@ -17,20 +17,21 @@
                                         <div class="profile-user-box">
                                             <div class="profile-user-img">
                                                 <img src="{{ $doctor->getFirstMediaUrl('profile') }}" alt="Profile">
+                                                @role('doctor')
+                                                    <div class="form-group students-up-files profile-edit-icon mb-0"
+                                                        style="bottom: -53px; left: 62rem;">
+                                                        <div class="uplod d-flex">
+                                                            <label class="file-upload profile-upbtn mb-0">
+                                                                <a href="{{ route('doctor_edit_profile', $doctor->id) }}"
+                                                                    class="btn">
+                                                                    <i class="feather-edit-3"></i>
+                                                                </a>
+                                                            </label>
 
-                                                <div class="form-group students-up-files profile-edit-icon mb-0"
-                                                    style="bottom: -53px; left: 62rem;">
-                                                    <div class="uplod d-flex">
-
-                                                        <label class="file-upload profile-upbtn mb-0">
-                                                            <a href="{{ route('doctor_edit_profile', $doctor->id) }}"
-                                                                class="btn">
-                                                                <i class="feather-edit-3"></i>
-                                                            </a>
-                                                        </label>
-
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endrole
+
                                             </div>
                                             {{--  <div class="names-profiles">
                                                 <h4>{{ $doctor->first_name }} {{ $doctor->last_name }}</h4>
@@ -131,7 +132,8 @@
                                             </div>
                                             <div class="views-personal">
                                                 <h4>Status</h4>
-                                                <h5>{{ $doctor->is_active == 0 ? __('pages.Inactive') : __('pages.active') }}</h5>
+                                                <h5>{{ $doctor->is_active == 0 ? __('pages.Inactive') : __('pages.active') }}
+                                                </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -148,7 +150,8 @@
                                             <h4>{{ __('pages.about_me') }}</h4>
                                         </div>
                                         <div class="hello-park">
-                                            <h5>{{ __('pages.hello') }} {{ $doctor->first_name }} {{ $doctor->last_name }}</h5>
+                                            <h5>{{ __('pages.hello') }} {{ $doctor->first_name }}
+                                                {{ $doctor->last_name }}</h5>
                                             <p>{{ $doctor->doctor?->bio }} </p>
                                         </div>
                                     </div>

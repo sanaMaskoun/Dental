@@ -52,7 +52,7 @@
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label> {{ __('pages.specialization_pictures') }} <span class="login-danger">*</span></label>
-                                            <input type="file" class="form-control" name="img"
+                                            <input type="file" class="form-control" name="img" style="height: 44px;"
                                                 placeholder="{{ __('pages.enter_specialization_pictures') }}">
                                             @error('img')
                                                 <small class="form-text text-danger">{{ $message }}</small>

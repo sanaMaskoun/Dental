@@ -175,7 +175,7 @@ Route::get('/contact', [InterfaceController::class, 'contact'])->name('contact')
 Route::post('/contact-store', [InterfaceController::class, 'contactStore'])->name('contact_store')->middleware(middleware: 'auth');
 
 Route::get('/join', [InterfaceController::class, 'join'])->name('join');
-Route::post('/join-store', [InterfaceController::class, 'joinStore'])->name('join_store')->middleware(middleware: 'auth');
+Route::post('/join-store', [InterfaceController::class, 'joinStore'])->name('join_store');
 
 Route::get('/specialization-details/{specialization}', [InterfaceController::class, 'specializationDetails'])->name('specialization_details');
 Route::get('/service-details/{service}', [InterfaceController::class, 'serviceDetails'])->name('service_details');

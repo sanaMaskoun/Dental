@@ -58,7 +58,7 @@
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label> {{ __('pages.service_pictures') }} <span class="login-danger">*</span></label>
-                                            <input type="file" class="form-control" name="img"
+                                            <input type="file" class="form-control" name="img"  style="height: 44px;"
                                                 placeholder="{{ __('pages.enter_service_pictures') }}">
                                             @error('img')
                                                 <small class="form-text text-danger">{{ $message }}</small>

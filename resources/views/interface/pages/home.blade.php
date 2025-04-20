@@ -162,6 +162,12 @@
         $(document).ready(function() {
             @if (session('success') || session('info'))
                 $('#bookingModal').modal('hide');
+
+                setTimeout(function() {
+                    $('.alert').fadeOut('slow', function() {
+                        $(this).remove();
+                    });
+                }, 2000);
             @endif
 
             var choose_doctor = @json(__('pages.choose_doctor'));

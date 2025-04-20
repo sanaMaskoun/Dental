@@ -23,7 +23,9 @@ class ServiceController extends Controller
     }
     public function store(ServiceRequest $request)
     {
-
+        if (!$request->hasFile('img') ) {
+            return back()->withErrors(['img' => 'The field is required.']);
+        }
         $service = Service::create($request->validated());
         $service->addMedia(request()->file('img'))->toMediaCollection('img');
 

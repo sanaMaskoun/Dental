@@ -32,7 +32,7 @@ class AppointmentRequest extends FormRequest
             'date'           => $date,
             'start_time'     => $this->start_time,
             'end_time'       => $this->end_time,
-            'doctor_id'      => Auth()->user()->id,
+            'doctor_id'      => Auth()->user()->doctor->id,
         ];
     }
 }

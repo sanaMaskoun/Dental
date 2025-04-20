@@ -15,7 +15,7 @@ class AppointmentController extends Controller
 
     public function getAppointments()
     {
-        $appointments = Appointment::where('doctor_id',Auth()->user()->id)->get()->map(function ($appointment) {
+        $appointments = Appointment::where('doctor_id',Auth()->user()->doctor->id)->get()->map(function ($appointment) {
             return [
                 'id'     => $appointment->id,
                 'start'  => $appointment->date . 'T' . $appointment->start_time,

@@ -31,7 +31,7 @@ class JoinRequest extends FormRequest
             'name'          => $this->name,
             'email'         => $this->email,
             'subject'       => $this->subject,
-            'user_id'       => Auth()->user()->id,
+            // 'user_id'       => Auth()->user()->id,
             'phone'         => $this->phone,
             'status'        => StatusJoinUsEnum::pending,
 

@@ -53,14 +53,14 @@
                                         <div class="form-group local-forms">
                                             <label>{{ __('pages.specialization_pictures') }} <span class="login-danger">*</span></label>
 
+
+
+                                            <input type="file" class="form-control" name="img" style="height: 44px;">
                                             @if ($specialization->getFirstMediaUrl('img'))
-                                                <div style="margin-bottom: 10px;">
-                                                    <img src="{{ $specialization->getFirstMediaUrl('img') }}" alt="specialization Image" style="max-width: 100px; border-radius: 5px;">
-                                                </div>
-                                            @endif
-
-                                            <input type="file" class="form-control" name="img">
-
+                                            <div style="margin-top: 10px;">
+                                                <img src="{{ $specialization->getFirstMediaUrl('img') }}" alt="specialization Image" style="max-width: 100px; border-radius: 5px;">
+                                            </div>
+                                        @endif
                                             @error('img')
                                                 <small class="form-text text-danger">{{ $message }}</small>
                                             @enderror
